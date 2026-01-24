@@ -61,3 +61,91 @@ footer { padding: 30px 0; background: #333; color: #fff; text-align: center; }
 .mv-card { background: white; padding: 40px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); text-align: center; }
 .mv-card h3 { font-size: 1.8rem; color: #007aff; margin-bottom: 20px; }
 .mv-card p { font-size: 1.1rem; line-height: 1.7; }
+/* Hero mejorado */
+.hero {
+    height: 100vh;
+    position: relative;
+    background: url('https://images.unsplash.com/photo-1555949963-ff933de7a1e6?auto=format&fit=crop&q=80') center/cover no-repeat;
+    color: white;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(10, 37, 64, 0.7), rgba(10, 37, 64, 0.85));
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.hero h1 {
+    font-size: 4.2rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    letter-spacing: -1px;
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    font-weight: 300;
+    max-width: 800px;
+    margin: 0 auto 2.5rem;
+    opacity: 0.95;
+}
+
+/* Botón principal más premium */
+.btn-primary {
+    background: linear-gradient(135deg, #0066ff, #00aaff);
+    color: white;
+    padding: 18px 48px;
+    font-size: 1.3rem;
+    font-weight: 600;
+    border-radius: 50px;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(0, 102, 255, 0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 20px 50px rgba(0, 102, 255, 0.4);
+}
+
+/* Cards con hover más dinámico */
+.service-card {
+    transition: all 0.4s ease;
+    border: 1px solid #e0e0e0;
+}
+
+.service-card:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 25px 60px rgba(0,0,0,0.12);
+    border-color: #0066ff;
+}
+
+.service-icon {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 16px;
+    margin-bottom: 1.5rem;
+}
+
+/* Misión/Visión más elegante */
+.mv-card {
+    background: white;
+    padding: 50px 40px;
+    border-radius: 16px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+    transition: transform 0.3s;
+}
+
+.mv-card:hover {
+    transform: translateY(-10px);
+}
