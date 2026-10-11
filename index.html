@@ -1,941 +1,468 @@
 <!DOCTYPE html>
-
-<html lang="en">
+<html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>IMA Engineering — IT & Cybersecurity</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
-<style>
- :root {
-   --black: #080808;
-   --white: #f5f5f7;
-   --gray: #6e6e73;
-   --gray-light: #d2d2d7;
-   --accent: #0a84ff;
-   --accent-glow: rgba(10, 132, 255, 0.15);
-   --surface: #111114;
-   --surface2: #1c1c1e;
-   --border: rgba(255,255,255,0.08);
- }
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IMA Engineering — Ciberseguridad e infraestructura TI</title>
+<meta name="description" content="Consultoría de ciberseguridad en México: diagnóstico de postura, pruebas de penetración, SOC y monitoreo, seguridad en la nube y cumplimiento. Evalúa tu postura de seguridad en minutos.">
+<meta name="theme-color" content="#0b0c0f">
+<meta name="color-scheme" content="dark">
+<link rel="canonical" href="https://www.imaengineering.com.mx/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="IMA Engineering">
+<meta property="og:locale" content="es_MX">
+<meta property="og:url" content="https://www.imaengineering.com.mx/">
+<meta property="og:title" content="IMA Engineering — Ciberseguridad e infraestructura TI">
+<meta property="og:description" content="Conoce tu postura de seguridad y mejórala con un plan claro: diagnóstico, pruebas de penetración, monitoreo y cumplimiento.">
+<meta property="og:image" content="https://www.imaengineering.com.mx/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 
-html { scroll-behavior: smooth; }
+<link rel="stylesheet" href="/assets/css/styles.css">
+<script src="/assets/js/app.js" defer></script>
 
-body {
-background: var(--black);
-color: #ffffff;
-font-family: ‘DM Sans’, sans-serif;
-font-weight: 300;
-overflow-x: hidden;
-cursor: auto;
-}
-
-/* Custom cursor */
-.cursor {
-position: fixed;
-width: 10px; height: 10px;
-background: var(--accent);
-border-radius: 50%;
-pointer-events: none;
-z-index: 9999;
-transform: translate(-50%, -50%);
-transition: transform 0.1s, width 0.3s, height 0.3s, background 0.3s;
-mix-blend-mode: screen;
-}
-.cursor-ring {
-position: fixed;
-width: 36px; height: 36px;
-border: 1px solid rgba(255,255,255,0.5);
-border-radius: 50%;
-pointer-events: none;
-z-index: 9998;
-transform: translate(-50%, -50%);
-transition: transform 0.15s ease-out, width 0.3s, height 0.3s, opacity 0.3s;
-}
-body:hover .cursor { opacity: 1; }
-
-/* Nav */
-nav {
-position: fixed; top: 0; left: 0; right: 0;
-z-index: 1000;
-padding: 0 48px;
-height: 64px;
-display: flex; align-items: center; justify-content: space-between;
-background: rgba(8,8,8,0.75);
-backdrop-filter: blur(20px) saturate(180%);
--webkit-backdrop-filter: blur(20px) saturate(180%);
-border-bottom: 1px solid var(--border);
-animation: fadeDown 0.8s ease forwards;
-}
-
-@keyframes fadeDown {
-from { opacity: 0; transform: translateY(-20px); }
-to { opacity: 1; transform: translateY(0); }
-}
-
-.nav-logo {
-font-family: ‘Syne’, sans-serif;
-font-weight: 800;
-font-size: 18px;
-letter-spacing: -0.5px;
-color: #ffffff;
-text-decoration: none;
-}
-.nav-logo span { color: #ffffff; }
-
-.nav-links {
-display: flex; gap: 40px; list-style: none;
-align-items: center;
-}
-.nav-links a {
-font-size: 13px;
-font-weight: 400;
-color: #ffffff;
-text-decoration: none;
-letter-spacing: 0.2px;
-transition: color 0.2s;
-}
-.nav-links a:hover { color: #ffffff; }
-
-.lang-toggle {
-display: flex; gap: 2px;
-background: var(--surface2);
-border-radius: 20px;
-padding: 4px;
-}
-.lang-btn {
-font-size: 11px;
-font-weight: 500;
-font-family: ‘Syne’, sans-serif;
-letter-spacing: 0.5px;
-padding: 5px 14px;
-border-radius: 16px;
-border: none;
-background: transparent;
-color: #ffffff;
-cursor: auto;
-transition: all 0.2s;
-}
-.lang-btn.active {
-background: var(--accent);
-color: white;
-}
-
-/* Hero */
-#hero {
-min-height: 100vh;
-display: flex; flex-direction: column;
-align-items: center; justify-content: center;
-text-align: center;
-padding: 120px 48px 80px;
-position: relative;
-overflow: hidden;
-}
-
-.hero-bg {
-position: absolute; inset: 0;
-background:
-radial-gradient(ellipse 80% 60% at 50% 0%, rgba(255,255,255,0.12) 0%, transparent 70%),
-radial-gradient(ellipse 40% 40% at 20% 80%, rgba(255,255,255,0.06) 0%, transparent 60%),
-radial-gradient(ellipse 40% 40% at 80% 70%, rgba(100,200,255,0.04) 0%, transparent 60%);
-}
-
-/* Grid lines */
-.hero-grid {
-position: absolute; inset: 0;
-background-image:
-linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
-linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
-background-size: 80px 80px;
-mask-image: radial-gradient(ellipse 80% 80% at center, black 30%, transparent 100%);
-}
-
-.hero-eyebrow {
-font-size: 11px;
-font-family: ‘Syne’, sans-serif;
-font-weight: 600;
-letter-spacing: 3px;
-text-transform: uppercase;
-color: var(--accent);
-margin-bottom: 28px;
-opacity: 0;
-animation: fadeUp 0.8s 0.3s ease forwards;
-}
-
-.hero-title {
-font-family: ‘Syne’, sans-serif;
-font-weight: 800;
-font-size: clamp(48px, 8vw, 96px);
-line-height: 1.0;
-letter-spacing: -3px;
-color: #ffffff;
-max-width: 900px;
-opacity: 0;
-animation: fadeUp 0.9s 0.45s ease forwards;
-}
-
-.hero-title .highlight {
-background: linear-gradient(135deg, #ffffff, #ffffff, #ffffff);
-background-size: 200% 200%;
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
-background-clip: text;
-animation: gradientShift 4s ease infinite;
-}
-
-@keyframes gradientShift {
-0%, 100% { background-position: 0% 50%; }
-50% { background-position: 100% 50%; }
-}
-
-.hero-sub {
-margin-top: 28px;
-font-size: 18px;
-font-weight: 300;
-color: #ffffff;
-max-width: 560px;
-line-height: 1.6;
-opacity: 0;
-animation: fadeUp 0.9s 0.6s ease forwards;
-}
-
-.hero-cta {
-margin-top: 48px;
-display: flex; gap: 16px; flex-wrap: wrap; justify-content: center;
-opacity: 0;
-animation: fadeUp 0.9s 0.75s ease forwards;
-}
-
-.btn-primary {
-display: inline-flex; align-items: center; gap: 8px;
-padding: 14px 32px;
-background: var(--accent);
-color: white;
-border-radius: 100px;
-font-size: 15px;
-font-weight: 500;
-text-decoration: none;
-transition: all 0.3s;
-border: none;
-cursor: auto;
-letter-spacing: -0.2px;
-}
-.btn-primary:hover {
-background: #f0f0f2;
-transform: scale(1.03);
-box-shadow: 0 0 40px rgba(255,255,255,0.4);
-}
-
-.btn-secondary {
-display: inline-flex; align-items: center; gap: 8px;
-padding: 14px 32px;
-background: transparent;
-color: #ffffff;
-border-radius: 100px;
-font-size: 15px;
-font-weight: 400;
-text-decoration: none;
-transition: all 0.3s;
-border: 1px solid var(--border);
-cursor: auto;
-letter-spacing: -0.2px;
-}
-.btn-secondary:hover {
-border-color: rgba(255,255,255,0.2);
-color: #ffffff;
-background: rgba(255,255,255,0.04);
-}
-
-/* Scroll indicator */
-.scroll-hint {
-position: absolute; bottom: 40px;
-display: flex; flex-direction: column; align-items: center; gap: 8px;
-color: #6e6e73;
-font-size: 11px;
-letter-spacing: 2px;
-font-family: ‘Syne’, sans-serif;
-font-weight: 600;
-text-transform: uppercase;
-opacity: 0;
-animation: fadeUp 1s 1.2s ease forwards;
-}
-.scroll-line {
-width: 1px; height: 40px;
-background: linear-gradient(to bottom, var(--accent), transparent);
-animation: scrollPulse 2s ease infinite;
-}
-@keyframes scrollPulse {
-0%, 100% { opacity: 0.3; transform: scaleY(1); }
-50% { opacity: 1; transform: scaleY(1.2); }
-}
-
-@keyframes fadeUp {
-from { opacity: 0; transform: translateY(30px); }
-to { opacity: 1; transform: translateY(0); }
-}
-
-/* Stats bar */
-.stats-bar {
-background: var(--surface);
-border-top: 1px solid var(--border);
-border-bottom: 1px solid var(--border);
-padding: 40px 48px;
-display: flex; justify-content: center; gap: 80px;
-flex-wrap: wrap;
-}
-.stat { text-align: center; }
-.stat-number {
-font-family: ‘Syne’, sans-serif;
-font-size: 36px; font-weight: 800;
-color: #ffffff;
-letter-spacing: -1px;
-}
-.stat-number span { color: var(--accent); }
-.stat-label {
-font-size: 13px;
-color: #ffffff;
-margin-top: 4px;
-letter-spacing: 0.2px;
-}
-
-/* Section base */
-section { padding: 120px 48px; }
-
-.section-eyebrow {
-font-size: 11px;
-font-family: ‘Syne’, sans-serif;
-font-weight: 600;
-letter-spacing: 3px;
-text-transform: uppercase;
-color: #ffffff;
-}
-
-.section-title {
-font-family: ‘Syne’, sans-serif;
-font-weight: 800;
-font-size: clamp(32px, 4vw, 52px);
-letter-spacing: -2px;
-line-height: 1.05;
-color: #ffffff;
-max-width: 600px;
-margin-bottom: 20px;
-}
-
-.section-desc {
-font-size: 17px;
-color: #6e6e73;
-max-width: 500px;
-line-height: 1.7;
-}
-
-/* Services */
-#services { background: var(--black); }
-
-.services-layout {
-max-width: 1200px;
-margin: 0 auto;
-}
-
-.services-header {
-display: flex; justify-content: space-between; align-items: flex-end;
-margin-bottom: 64px;
-flex-wrap: wrap; gap: 32px;
-}
-
-.services-grid {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-gap: 2px;
-border: 1px solid var(--border);
-border-radius: 20px;
-overflow: hidden;
-}
-
-.service-card {
-background: var(--surface);
-padding: 48px 40px;
-position: relative;
-overflow: hidden;
-transition: background 0.3s;
-}
-.service-card::before {
-content: ‘’;
-position: absolute; inset: 0;
-background: linear-gradient(135deg, var(--accent-glow), transparent);
-opacity: 0;
-transition: opacity 0.4s;
-}
-.service-card:hover { background: var(--surface2); }
-.service-card:hover::before { opacity: 1; }
-
-.service-icon {
-width: 48px; height: 48px;
-border-radius: 14px;
-background: var(--accent-glow);
-border: 1px solid rgba(255,255,255,0.2);
-display: flex; align-items: center; justify-content: center;
-margin-bottom: 28px;
-font-size: 22px;
-}
-
-.service-name {
-font-family: ‘Syne’, sans-serif;
-font-size: 20px; font-weight: 700;
-color: #ffffff;
-letter-spacing: -0.5px;
-margin-bottom: 12px;
-}
-
-.service-desc {
-font-size: 15px;
-color: #6e6e73;
-line-height: 1.65;
-}
-
-.service-tag {
-display: inline-block;
-margin-top: 24px;
-font-size: 11px;
-font-family: ‘Syne’, sans-serif;
-font-weight: 600;
-letter-spacing: 1.5px;
-text-transform: uppercase;
-color: var(--accent);
-padding: 5px 12px;
-border-radius: 20px;
-border: 1px solid rgba(255,255,255,0.25);
-background: var(--accent-glow);
-}
-
-/* About */
-#about {
-background: var(--surface);
-border-top: 1px solid var(--border);
-border-bottom: 1px solid var(--border);
-}
-
-.about-layout {
-max-width: 1200px; margin: 0 auto;
-display: grid; grid-template-columns: 1fr 1fr;
-gap: 80px; align-items: center;
-}
-
-.about-visual {
-position: relative;
-height: 480px;
-border-radius: 24px;
-overflow: hidden;
-background: var(--surface2);
-border: 1px solid var(--border);
-display: flex; align-items: center; justify-content: center;
-}
-
-.about-diagram {
-position: relative;
-width: 260px; height: 260px;
-}
-
-.ring {
-position: absolute;
-border-radius: 50%;
-border: 1px solid rgba(255,255,255,0.2);
-animation: ringPulse 4s ease infinite;
-}
-.ring:nth-child(1) { inset: 0; animation-delay: 0s; }
-.ring:nth-child(2) { inset: -30px; animation-delay: 0.8s; border-color: rgba(255,255,255,0.12); }
-.ring:nth-child(3) { inset: -60px; animation-delay: 1.6s; border-color: rgba(255,255,255,0.07); }
-.ring:nth-child(4) { inset: -90px; animation-delay: 2.4s; border-color: rgba(255,255,255,0.04); }
-
-@keyframes ringPulse {
-0%, 100% { transform: scale(1); opacity: 0.6; }
-50% { transform: scale(1.05); opacity: 1; }
-}
-
-.ring-core {
-position: absolute; inset: 40px;
-border-radius: 50%;
-background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.05));
-border: 1px solid rgba(255,255,255,0.4);
-display: flex; align-items: center; justify-content: center;
-font-size: 36px;
-}
-
-/* floating dots */
-.orbit-dot {
-position: absolute;
-width: 8px; height: 8px;
-border-radius: 50%;
-background: var(--accent);
-top: 50%; left: 50%;
-transform-origin: 0 0;
-}
-.orbit-dot:nth-child(5) { animation: orbit1 8s linear infinite; }
-.orbit-dot:nth-child(6) { animation: orbit2 12s linear infinite; }
-.orbit-dot:nth-child(7) { animation: orbit3 6s linear infinite; }
-
-@keyframes orbit1 {
-from { transform: rotate(0deg) translateX(110px) rotate(0deg); }
-to { transform: rotate(360deg) translateX(110px) rotate(-360deg); }
-}
-@keyframes orbit2 {
-from { transform: rotate(120deg) translateX(140px) rotate(-120deg); }
-to { transform: rotate(480deg) translateX(140px) rotate(-480deg); }
-}
-@keyframes orbit3 {
-from { transform: rotate(240deg) translateX(90px) rotate(-240deg); }
-to { transform: rotate(600deg) translateX(90px) rotate(-600deg); }
-}
-
-
-
-.about-values {
-margin-top: 48px;
-display: flex; flex-direction: column; gap: 0;
-border: 1px solid var(--border);
-border-radius: 16px; overflow: hidden;
-}
-.value-row {
-display: flex; align-items: center; gap: 20px;
-padding: 20px 24px;
-border-bottom: 1px solid var(--border);
-transition: background 0.2s;
-}
-.value-row:last-child { border-bottom: none; }
-.value-row:hover { background: rgba(255,255,255,0.02); }
-.value-num {
-font-family: ‘Syne’, sans-serif;
-font-size: 11px; font-weight: 700;
-color: var(--accent);
-letter-spacing: 1px;
-min-width: 24px;
-}
-.value-text { font-size: 15px; color: #d2d2d7; }
-
-/* Contact */
-#contact { background: var(--black); }
-
-.contact-layout {
-max-width: 1200px; margin: 0 auto;
-display: grid; grid-template-columns: 1fr 1fr;
-gap: 80px; align-items: start;
-}
-
-.contact-form {
-display: flex; flex-direction: column; gap: 16px;
-margin-top: 40px;
-}
-
-.form-group { display: flex; flex-direction: column; gap: 8px; }
-
-.form-label {
-font-size: 12px;
-font-family: ‘Syne’, sans-serif;
-font-weight: 600;
-letter-spacing: 1px;
-text-transform: uppercase;
-color: #6e6e73;
-}
-
-.form-input, .form-textarea {
-background: var(--surface);
-border: 1px solid var(--border);
-border-radius: 12px;
-padding: 14px 18px;
-color: #ffffff;
-font-family: ‘DM Sans’, sans-serif;
-font-size: 15px;
-font-weight: 300;
-outline: none;
-transition: border-color 0.2s, box-shadow 0.2s;
-cursor: auto;
-}
-.form-input:focus, .form-textarea:focus {
-border-color: rgba(255,255,255,0.5);
-box-shadow: 0 0 0 3px rgba(255,255,255,0.08);
-}
-.form-input::placeholder, .form-textarea::placeholder { color: #6e6e73; }
-.form-textarea { min-height: 140px; resize: vertical; }
-
-.contact-info {
-margin-top: 40px;
-display: flex; flex-direction: column; gap: 16px;
-}
-.contact-item {
-display: flex; align-items: center; gap: 16px;
-padding: 20px 24px;
-background: var(--surface);
-border: 1px solid var(--border);
-border-radius: 14px;
-transition: border-color 0.2s;
-}
-.contact-item:hover { border-color: rgba(255,255,255,0.3); }
-.contact-icon { font-size: 20px; }
-
-.contact-type {
-font-size: 11px;
-font-family: ‘Syne’, sans-serif;
-font-weight: 600;
-letter-spacing: 1.5px;
-text-transform: uppercase;
-color: var(--accent);
-margin-bottom: 3px;
-}
-.contact-val { font-size: 15px; color: #d2d2d7; }
-
-/* Footer */
-footer {
-background: var(--surface);
-border-top: 1px solid var(--border);
-padding: 48px;
-display: flex; justify-content: space-between; align-items: center;
-flex-wrap: wrap; gap: 20px;
-}
-.footer-brand {
-font-family: ‘Syne’, sans-serif;
-font-weight: 800; font-size: 16px;
-color: #ffffff;
-}
-.footer-brand span { color: var(--accent); }
-.footer-copy { font-size: 13px; color: #ffffff; }
-.footer-links { display: flex; gap: 28px; }
-.footer-links a { font-size: 13px; color: #ffffff; text-decoration: none; transition: color 0.2s; }
-.footer-links a:hover { color: #ffffff; }
-
-/* Responsive */
-@media (max-width: 900px) {
-nav { padding: 0 24px; }
-.nav-links { display: none; }
-section { padding: 80px 24px; }
-.about-layout, .contact-layout { grid-template-columns: 1fr; gap: 48px; }
-.about-visual { height: 300px; }
-.stats-bar { gap: 40px; padding: 40px 24px; }
-footer { padding: 32px 24px; }
-.hero-title { letter-spacing: -2px; }
-.services-header { margin-bottom: 40px; }
-}
-
-/* Scroll reveal */
-.reveal {
-opacity: 0; transform: translateY(40px);
-transition: opacity 0.8s ease, transform 0.8s ease;
-}
-.reveal.visible {
-opacity: 1; transform: translateY(0);
-}
-</style>
-
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "IMA Engineering",
+  "url": "https://www.imaengineering.com.mx/",
+  "logo": "https://www.imaengineering.com.mx/apple-touch-icon.png",
+  "email": "contacto@imaengineering.com",
+  "description": "Consultoría de ciberseguridad e infraestructura TI: diagnóstico de postura, pruebas de penetración, SOC y monitoreo, seguridad en la nube y cumplimiento.",
+  "areaServed": "MX",
+  "address": { "@type": "PostalAddress", "addressLocality": "Ciudad de México", "addressCountry": "MX" },
+  "knowsAbout": ["Ciberseguridad", "Pruebas de penetración", "NIST Cybersecurity Framework", "ISO/IEC 27001", "Seguridad en la nube", "SOC"]
+}
+</script>
 </head>
 <body>
 
-<!-- Custom cursor -->
+<a class="skip-link" href="#main" data-i18n="skip">Saltar al contenido</a>
 
-<div class="cursor" id="cursor"></div>
-<div class="cursor-ring" id="cursorRing"></div>
+<header class="site-header" id="top">
+  <div class="container header-inner">
+    <a href="#top" class="brand" aria-label="IMA Engineering — inicio">
+      <svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.8l7.6 2.9v5.9c0 4.6-3.2 8.5-7.6 9.6-4.4-1.1-7.6-5-7.6-9.6V5.7L12 2.8z"/><path d="M9 12l2.2 2.2L15.5 10"/></svg>
+      <span class="brand-name">IMA <span>Engineering</span></span>
+    </a>
 
-<!-- Navigation -->
+    <nav class="site-nav" id="site-nav" aria-label="Principal">
+      <ul>
+        <li><a href="#servicios" data-i18n="nav.services">Servicios</a></li>
+        <li><a href="#metodo" data-i18n="nav.method">Método</a></li>
+        <li><a href="#autoevaluacion" data-i18n="nav.assessment">Autoevaluación</a></li>
+        <li><a href="#faq" data-i18n="nav.faq">Preguntas</a></li>
+        <li class="nav-cta-mobile"><a href="#contacto" class="btn btn-primary btn-block" data-i18n="nav.contact">Agendar diagnóstico</a></li>
+      </ul>
+    </nav>
 
-<nav>
- <a href="#hero" class="nav-logo">IMA<span>.</span>Engineering</a>
- <ul class="nav-links">
-   <li><a href="#services" data-es="Servicios" data-en="Services">Servicios</a></li>
-   <li><a href="#about" data-es="Nosotros" data-en="About">Nosotros</a></li>
-   <li><a href="#contact" data-es="Contacto" data-en="Contact">Contacto</a></li>
- </ul>
- <div class="lang-toggle">
-   <button class="lang-btn active" onclick="setLang('es')">ES</button>
-   <button class="lang-btn" onclick="setLang('en')">EN</button>
- </div>
-</nav>
+    <div class="header-actions">
+      <div class="lang-toggle" role="group" aria-label="Idioma / Language">
+        <button type="button" class="lang-btn" data-lang="es" aria-pressed="true">ES</button>
+        <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <a href="#contacto" class="btn btn-primary btn-sm header-cta" data-i18n="nav.contact">Agendar diagnóstico</a>
+      <button type="button" class="menu-toggle" aria-controls="site-nav" aria-expanded="false" data-i18n-aria="nav.menu" aria-label="Abrir menú">
+        <span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
 
 <!-- Hero -->
+<section class="hero" aria-labelledby="hero-title">
+  <span id="hero" class="anchor-alias" aria-hidden="true"></span>
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="container hero-inner">
+    <div class="hero-copy">
+      <p class="eyebrow" data-i18n="hero.eyebrow">Ciberseguridad e infraestructura TI · México</p>
+      <h1 id="hero-title" data-i18n="hero.title">Conoce tu postura de seguridad. <span class="text-dim">Mejórala con un plan claro.</span></h1>
+      <p class="lead" data-i18n="hero.lead">Evaluamos tu exposición real, priorizamos los riesgos que importan para tu negocio y te acompañamos en la remediación y el monitoreo continuo.</p>
+      <div class="hero-ctas">
+        <a href="#autoevaluacion" class="btn btn-primary" data-i18n="hero.cta1">Evaluar mi postura</a>
+        <a href="#contacto" class="btn btn-ghost" data-i18n="hero.cta2">Hablar con un especialista</a>
+      </div>
+      <a href="#contacto" class="incident-link" data-topic="incidente">
+        <span class="pulse" aria-hidden="true"></span>
+        <span data-i18n="hero.incident">¿Incidente en curso? Contáctanos de inmediato</span>
+        <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </a>
+    </div>
 
-<section id="hero">
- <div class="hero-bg"></div>
- <div class="hero-grid"></div>
- <p class="hero-eyebrow" data-es="IT & CIBERSEGURIDAD · CONSULTORÍA ESPECIALIZADA" data-en="IT & CYBERSECURITY · SPECIALIZED CONSULTING">IT & CIBERSEGURIDAD · CONSULTORÍA ESPECIALIZADA</p>
- <h1 class="hero-title">
-   <span data-es="Protegemos tu" data-en="We protect">Protegemos tu</span><br>
-   <span class="highlight" data-es="infraestructura digital." data-en="your digital infrastructure.">infraestructura digital.</span>
- </h1>
- <p class="hero-sub" data-es="Soluciones integrales de IT y ciberseguridad diseñadas para empresas que no pueden permitirse vulnerabilidades." data-en="Comprehensive IT and cybersecurity solutions designed for businesses that cannot afford vulnerabilities.">
-   Soluciones integrales de IT y ciberseguridad diseñadas para empresas que no pueden permitirse vulnerabilidades.
- </p>
- <div class="hero-cta">
-   <a href="#contact" class="btn-primary">
-     <span data-es="Hablar con un experto" data-en="Talk to an expert">Hablar con un experto</span>
-     <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-   </a>
-   <a href="#services" class="btn-secondary">
-     <span data-es="Ver servicios" data-en="View services">Ver servicios</span>
-   </a>
- </div>
- <div class="scroll-hint">
-   <div class="scroll-line"></div>
-   <span data-es="SCROLL" data-en="SCROLL">SCROLL</span>
- </div>
+    <aside class="hero-card" aria-labelledby="hero-card-title">
+      <div class="hero-card-head">
+        <span class="mono-label" data-i18n="card.label">Autoevaluación</span>
+        <span class="mono-label dim">NIST CSF 2.0</span>
+      </div>
+      <h2 id="hero-card-title" data-i18n="card.title">¿Qué tan preparada está tu organización?</h2>
+      <p data-i18n="card.text">Doce preguntas, cinco minutos. Obtén tu nivel de madurez en las seis funciones del marco y las prioridades por dónde empezar.</p>
+      <ul class="function-list">
+        <li><span class="fn-dot"></span><span data-i18n="fn.GV">Gobernar</span></li>
+        <li><span class="fn-dot"></span><span data-i18n="fn.ID">Identificar</span></li>
+        <li><span class="fn-dot"></span><span data-i18n="fn.PR">Proteger</span></li>
+        <li><span class="fn-dot"></span><span data-i18n="fn.DE">Detectar</span></li>
+        <li><span class="fn-dot"></span><span data-i18n="fn.RS">Responder</span></li>
+        <li><span class="fn-dot"></span><span data-i18n="fn.RC">Recuperar</span></li>
+      </ul>
+      <a href="#autoevaluacion" class="btn btn-outline btn-block" data-i18n="card.cta">Comenzar autoevaluación</a>
+      <p class="fineprint" data-i18n="card.privacy">Tus respuestas se procesan solo en tu navegador.</p>
+    </aside>
+  </div>
 </section>
 
-<!-- Stats -->
-
-<div class="stats-bar">
- <div class="stat reveal">
-   <div class="stat-number">10<span>+</span></div>
-   <div class="stat-label" data-es="Años de experiencia" data-en="Years of experience">Años de experiencia</div>
- </div>
- <div class="stat reveal" style="transition-delay:0.1s">
-   <div class="stat-number">200<span>+</span></div>
-   <div class="stat-label" data-es="Clientes protegidos" data-en="Clients protected">Clientes protegidos</div>
- </div>
- <div class="stat reveal" style="transition-delay:0.2s">
-   <div class="stat-number">99<span>.9%</span></div>
-   <div class="stat-label" data-es="Uptime garantizado" data-en="Guaranteed uptime">Uptime garantizado</div>
- </div>
- <div class="stat reveal" style="transition-delay:0.3s">
-   <div class="stat-number">0</div>
-   <div class="stat-label" data-es="Brechas de seguridad" data-en="Security breaches">Brechas de seguridad</div>
- </div>
-</div>
+<!-- Frameworks -->
+<section class="frameworks" aria-labelledby="fw-title">
+  <div class="container">
+    <h2 id="fw-title" class="mono-label center" data-i18n="fw.title">Trabajamos con marcos y estándares reconocidos</h2>
+    <ul class="fw-list">
+      <li>NIST CSF 2.0</li>
+      <li>CIS Controls</li>
+      <li>ISO/IEC 27001</li>
+      <li>OWASP</li>
+      <li>MITRE ATT&amp;CK</li>
+      <li>PCI DSS</li>
+    </ul>
+  </div>
+</section>
 
 <!-- Services -->
+<section class="section" id="servicios" aria-labelledby="services-title">
+  <span id="services" class="anchor-alias" aria-hidden="true"></span>
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow" data-i18n="svc.eyebrow">Servicios</p>
+      <h2 id="services-title" data-i18n="svc.title">Cada capa de tu seguridad, con entregables concretos.</h2>
+      <p class="section-lead" data-i18n="svc.lead">Sin paquetes genéricos: definimos el alcance según tu operación, tu sector y tus obligaciones regulatorias.</p>
+    </div>
 
-<section id="services">
- <div class="services-layout">
-   <div class="services-header">
-     <div>
-       <p class="section-eyebrow" data-es="SERVICIOS" data-en="SERVICES">SERVICIOS</p>
-       <h2 class="section-title" data-es="Todo lo que tu empresa necesita." data-en="Everything your company needs.">Todo lo que tu empresa necesita.</h2>
-     </div>
-     <p class="section-desc" data-es="Desde infraestructura hasta protección avanzada, cubrimos cada capa de tu ecosistema digital." data-en="From infrastructure to advanced protection, we cover every layer of your digital ecosystem.">
-       Desde infraestructura hasta protección avanzada, cubrimos cada capa de tu ecosistema digital.
-     </p>
-   </div>
-   <div class="services-grid">
-     <div class="service-card reveal">
-       <div class="service-icon">🛡️</div>
-       <div class="service-name" data-es="Ciberseguridad Empresarial" data-en="Enterprise Cybersecurity">Ciberseguridad Empresarial</div>
-       <p class="service-desc" data-es="Auditorías de seguridad, pruebas de penetración y protección perimetral para mantener tus datos seguros ante amenazas modernas." data-en="Security audits, penetration testing, and perimeter protection to keep your data safe from modern threats.">
-         Auditorías de seguridad, pruebas de penetración y protección perimetral para mantener tus datos seguros ante amenazas modernas.
-       </p>
-       <span class="service-tag" data-es="SEGURIDAD" data-en="SECURITY">SEGURIDAD</span>
-     </div>
-     <div class="service-card reveal" style="transition-delay:0.1s">
-       <div class="service-icon">☁️</div>
-       <div class="service-name" data-es="Infraestructura en la Nube" data-en="Cloud Infrastructure">Infraestructura en la Nube</div>
-       <p class="service-desc" data-es="Migración, gestión y optimización de entornos cloud en AWS, Azure y GCP. Escalabilidad sin comprometer la seguridad." data-en="Migration, management and optimization of cloud environments on AWS, Azure and GCP. Scalability without compromising security.">
-         Migración, gestión y optimización de entornos cloud en AWS, Azure y GCP. Escalabilidad sin comprometer la seguridad.
-       </p>
-       <span class="service-tag" data-es="CLOUD" data-en="CLOUD">CLOUD</span>
-     </div>
-     <div class="service-card reveal" style="transition-delay:0.2s">
-       <div class="service-icon">🔍</div>
-       <div class="service-name" data-es="SOC & Monitoreo 24/7" data-en="SOC & 24/7 Monitoring">SOC & Monitoreo 24/7</div>
-       <p class="service-desc" data-es="Centro de operaciones de seguridad activo las 24 horas. Detección y respuesta a incidentes en tiempo real antes de que escalen." data-en="Security operations center active 24 hours. Detection and incident response in real time before they escalate.">
-         Centro de operaciones de seguridad activo las 24 horas. Detección y respuesta a incidentes en tiempo real antes de que escalen.
-       </p>
-       <span class="service-tag" data-es="MONITOREO" data-en="MONITORING">MONITOREO</span>
-     </div>
-     <div class="service-card reveal" style="transition-delay:0.3s">
-       <div class="service-icon">🔧</div>
-       <div class="service-name" data-es="Soporte IT Administrado" data-en="Managed IT Support">Soporte IT Administrado</div>
-       <p class="service-desc" data-es="Gestión completa de tu infraestructura tecnológica: redes, servidores, endpoints y usuarios. Tu equipo de IT externo de confianza." data-en="Complete management of your technology infrastructure: networks, servers, endpoints and users. Your trusted external IT team.">
-         Gestión completa de tu infraestructura tecnológica: redes, servidores, endpoints y usuarios. Tu equipo de IT externo de confianza.
-       </p>
-       <span class="service-tag" data-es="IT MANAGEMENT" data-en="IT MANAGEMENT">IT MANAGEMENT</span>
-     </div>
-     <div class="service-card reveal" style="transition-delay:0.4s">
-       <div class="service-icon">📋</div>
-       <div class="service-name" data-es="Cumplimiento & Compliance" data-en="Compliance & Regulation">Cumplimiento & Compliance</div>
-       <p class="service-desc" data-es="Asesoría para certificaciones ISO 27001, SOC 2, GDPR y regulaciones locales. Cumple con los estándares sin fricciones operativas." data-en="Advisory for ISO 27001, SOC 2, GDPR certifications and local regulations. Comply with standards without operational friction.">
-         Asesoría para certificaciones ISO 27001, SOC 2, GDPR y regulaciones locales. Cumple con los estándares sin fricciones operativas.
-       </p>
-       <span class="service-tag" data-es="COMPLIANCE" data-en="COMPLIANCE">COMPLIANCE</span>
-     </div>
-     <div class="service-card reveal" style="transition-delay:0.5s">
-       <div class="service-icon">🎓</div>
-       <div class="service-name" data-es="Capacitación en Seguridad" data-en="Security Training">Capacitación en Seguridad</div>
-       <p class="service-desc" data-es="Programas de concientización y entrenamiento para tu equipo. El factor humano es la primera línea de defensa." data-en="Awareness and training programs for your team. The human factor is the first line of defense.">
-         Programas de concientización y entrenamiento para tu equipo. El factor humano es la primera línea de defensa.
-       </p>
-       <span class="service-tag" data-es="TRAINING" data-en="TRAINING">TRAINING</span>
-     </div>
-   </div>
- </div>
+    <div class="services-grid">
+      <article class="service-card reveal">
+        <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/><path d="M12 1.5v4M12 18.5v4M1.5 12h4M18.5 12h4"/></svg></div>
+        <h3 data-i18n="svc.1.t">Pruebas de penetración</h3>
+        <p data-i18n="svc.1.d">Simulamos ataques reales contra tu perímetro, aplicaciones web y red interna para encontrar lo que un adversario encontraría primero.</p>
+        <ul class="deliverables">
+          <li data-i18n="svc.1.a">Informe ejecutivo y técnico con evidencia</li>
+          <li data-i18n="svc.1.b">Hallazgos clasificados por severidad (CVSS)</li>
+          <li data-i18n="svc.1.c">Verificación posterior de la remediación</li>
+        </ul>
+      </article>
+
+      <article class="service-card reveal">
+        <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></div>
+        <h3 data-i18n="svc.2.t">SOC y monitoreo 24/7</h3>
+        <p data-i18n="svc.2.d">Detección y respuesta continua: correlacionamos eventos de tus sistemas, atendemos alertas y contenemos incidentes antes de que escalen.</p>
+        <ul class="deliverables">
+          <li data-i18n="svc.2.a">Centralización de registros y casos de uso de detección</li>
+          <li data-i18n="svc.2.b">Gestión de alertas y respuesta a incidentes</li>
+          <li data-i18n="svc.2.c">Reportes periódicos de actividad y tendencias</li>
+        </ul>
+      </article>
+
+      <article class="service-card reveal">
+        <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 18.5a4.5 4.5 0 0 1-.7-8.95 6 6 0 0 1 11.5 1.2A3.9 3.9 0 0 1 17.5 18.5H7z"/><path d="M12 11.5v4M10 13.5h4"/></svg></div>
+        <h3 data-i18n="svc.3.t">Seguridad en la nube</h3>
+        <p data-i18n="svc.3.d">Revisión de configuración, identidades y arquitectura en AWS, Azure y Google Cloud. Migraciones que escalan sin abrir nuevas puertas.</p>
+        <ul class="deliverables">
+          <li data-i18n="svc.3.a">Revisión de configuración contra buenas prácticas</li>
+          <li data-i18n="svc.3.b">Endurecimiento de identidades y permisos (IAM)</li>
+          <li data-i18n="svc.3.c">Arquitectura y migración segura</li>
+        </ul>
+      </article>
+
+      <article class="service-card reveal">
+        <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="7" rx="1.5"/><rect x="3" y="13" width="18" height="7" rx="1.5"/><path d="M7 7.5h.01M7 16.5h.01M11 7.5h6M11 16.5h6"/></svg></div>
+        <h3 data-i18n="svc.4.t">TI administrada</h3>
+        <p data-i18n="svc.4.d">Operamos tu infraestructura con criterios de seguridad: redes, servidores, equipos de usuario y cuentas, con procesos documentados.</p>
+        <ul class="deliverables">
+          <li data-i18n="svc.4.a">Gestión de parches y actualizaciones</li>
+          <li data-i18n="svc.4.b">Respaldos con pruebas de restauración</li>
+          <li data-i18n="svc.4.c">Soporte a usuarios y administración de accesos</li>
+        </ul>
+      </article>
+
+      <article class="service-card reveal">
+        <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V2.8h6V4M9 12.5l2 2 4-4"/></svg></div>
+        <h3 data-i18n="svc.5.t">Cumplimiento normativo</h3>
+        <p data-i18n="svc.5.d">Te preparamos para ISO/IEC 27001, SOC 2 y PCI DSS, y para tus obligaciones de protección de datos personales en México.</p>
+        <ul class="deliverables">
+          <li data-i18n="svc.5.a">Análisis de brechas contra la norma</li>
+          <li data-i18n="svc.5.b">Políticas, procedimientos y evidencias</li>
+          <li data-i18n="svc.5.c">Acompañamiento durante la auditoría</li>
+        </ul>
+      </article>
+
+      <article class="service-card reveal">
+        <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><path d="M16 4.8a3.2 3.2 0 0 1 0 6.4M21 20c0-2.6-1.6-4.9-4-5.7"/></svg></div>
+        <h3 data-i18n="svc.6.t">Concientización del personal</h3>
+        <p data-i18n="svc.6.d">El factor humano sigue siendo la puerta de entrada más común. Formamos a tu equipo para reconocer y reportar amenazas.</p>
+        <ul class="deliverables">
+          <li data-i18n="svc.6.a">Capacitación adaptada a cada área</li>
+          <li data-i18n="svc.6.b">Simulaciones de phishing controladas</li>
+          <li data-i18n="svc.6.c">Indicadores de avance para la dirección</li>
+        </ul>
+      </article>
+    </div>
+  </div>
 </section>
 
-<!-- About -->
+<!-- Method -->
+<section class="section section-alt" id="metodo" aria-labelledby="method-title">
+  <span id="about" class="anchor-alias" aria-hidden="true"></span>
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow" data-i18n="m.eyebrow">Método</p>
+      <h2 id="method-title" data-i18n="m.title">De la incertidumbre a un plan medible.</h2>
+      <p class="section-lead" data-i18n="m.lead">Un proceso claro para que la dirección entienda el riesgo y el equipo técnico sepa exactamente qué hacer.</p>
+    </div>
+    <ol class="steps">
+      <li class="step reveal">
+        <span class="step-num">01</span>
+        <h3 data-i18n="m.1.t">Diagnosticar</h3>
+        <p data-i18n="m.1.d">Entrevistas, revisión documental y pruebas técnicas para conocer tu exposición real, no la supuesta.</p>
+      </li>
+      <li class="step reveal">
+        <span class="step-num">02</span>
+        <h3 data-i18n="m.2.t">Priorizar</h3>
+        <p data-i18n="m.2.d">Ordenamos los hallazgos por impacto en el negocio y probabilidad, no por volumen de alertas.</p>
+      </li>
+      <li class="step reveal">
+        <span class="step-num">03</span>
+        <h3 data-i18n="m.3.t">Remediar</h3>
+        <p data-i18n="m.3.d">Acompañamos a tu equipo, o lo ejecutamos nosotros, y verificamos que cada corrección funcione.</p>
+      </li>
+      <li class="step reveal">
+        <span class="step-num">04</span>
+        <h3 data-i18n="m.4.t">Monitorear y mejorar</h3>
+        <p data-i18n="m.4.d">Medimos la evolución de tu postura y ajustamos el plan conforme cambian tu negocio y las amenazas.</p>
+      </li>
+    </ol>
+  </div>
+</section>
 
-<section id="about">
- <div class="about-layout">
-   <div class="about-visual reveal">
-     <div class="about-diagram">
-       <div class="ring"></div>
-       <div class="ring"></div>
-       <div class="ring"></div>
-       <div class="ring"></div>
-       <div class="ring-core">🔐</div>
-       <div class="orbit-dot"></div>
-       <div class="orbit-dot"></div>
-       <div class="orbit-dot"></div>
-     </div>
-   </div>
-   <div class="about-content reveal" style="transition-delay:0.2s">
-     <p class="section-eyebrow" data-es="NOSOTROS" data-en="ABOUT US">NOSOTROS</p>
-     <h2 class="section-title" data-es="Ingeniería al servicio de tu seguridad." data-en="Engineering at the service of your security.">Ingeniería al servicio de tu seguridad.</h2>
-     <p class="section-desc" data-es="En IMA Engineering combinamos experiencia técnica profunda con una visión estratégica del negocio. No somos solo proveedores — somos tu aliado tecnológico." data-en="At IMA Engineering we combine deep technical expertise with a strategic business vision. We're not just vendors — we're your technology partner.">
-       En IMA Engineering combinamos experiencia técnica profunda con una visión estratégica del negocio. No somos solo proveedores — somos tu aliado tecnológico.
-     </p>
-     <div class="about-values">
-       <div class="value-row">
-         <span class="value-num">01</span>
-         <span class="value-text" data-es="Respuesta de incidentes en menos de 2 horas" data-en="Incident response in less than 2 hours">Respuesta de incidentes en menos de 2 horas</span>
-       </div>
-       <div class="value-row">
-         <span class="value-num">02</span>
-         <span class="value-text" data-es="Equipo certificado en CISSP, CEH y AWS" data-en="Team certified in CISSP, CEH and AWS">Equipo certificado en CISSP, CEH y AWS</span>
-       </div>
-       <div class="value-row">
-         <span class="value-num">03</span>
-         <span class="value-text" data-es="Soluciones a medida, sin paquetes genéricos" data-en="Tailored solutions, no generic packages">Soluciones a medida, sin paquetes genéricos</span>
-       </div>
-       <div class="value-row">
-         <span class="value-num">04</span>
-         <span class="value-text" data-es="Soporte humano 24/7, sin bots" data-en="Human 24/7 support, no bots">Soporte humano 24/7, sin bots</span>
-       </div>
-     </div>
-   </div>
- </div>
+<!-- Posture diagnostic offer -->
+<section class="section" id="diagnostico" aria-labelledby="diag-title">
+  <div class="container diag-layout">
+    <div>
+      <p class="eyebrow" data-i18n="d.eyebrow">Punto de partida</p>
+      <h2 id="diag-title" data-i18n="d.title">Diagnóstico de postura de seguridad</h2>
+      <p class="section-lead" data-i18n="d.lead">La forma más directa de saber dónde estás y qué hacer primero. Combina entrevistas con tu equipo, revisión de documentación y pruebas técnicas no intrusivas.</p>
+      <a href="#contacto" class="btn btn-primary" data-topic="diagnostico" data-i18n="d.cta">Solicitar diagnóstico</a>
+    </div>
+    <div class="diag-panel reveal">
+      <p class="mono-label" data-i18n="d.get">Lo que recibes</p>
+      <ul class="check-list">
+        <li><strong data-i18n="d.1.t">Resumen ejecutivo</strong><span data-i18n="d.1.d">El nivel de riesgo explicado en lenguaje de negocio, para la dirección.</span></li>
+        <li><strong data-i18n="d.2.t">Mapa de madurez</strong><span data-i18n="d.2.d">Tu situación en cada función de NIST CSF 2.0, con la evidencia que la respalda.</span></li>
+        <li><strong data-i18n="d.3.t">Hallazgos priorizados</strong><span data-i18n="d.3.d">Cada hallazgo con severidad, impacto y recomendación concreta.</span></li>
+        <li><strong data-i18n="d.4.t">Hoja de ruta</strong><span data-i18n="d.4.d">Acciones ordenadas a corto, mediano y largo plazo, con responsables sugeridos.</span></li>
+        <li><strong data-i18n="d.5.t">Sesión de resultados</strong><span data-i18n="d.5.d">Revisamos el informe con tu equipo y resolvemos dudas.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Self assessment -->
+<section class="section section-alt" id="autoevaluacion" aria-labelledby="assess-title">
+  <div class="container">
+    <div class="section-head center">
+      <p class="eyebrow" data-i18n="a.eyebrow">Autoevaluación</p>
+      <h2 id="assess-title" data-i18n="a.title">Mide tu postura en cinco minutos.</h2>
+      <p class="section-lead" data-i18n="a.lead">Responde con honestidad: el objetivo es identificar prioridades, no obtener una calificación perfecta. Nada se envía a ningún servidor.</p>
+    </div>
+
+    <div class="assess" id="assess">
+      <noscript><p class="assess-noscript">Activa JavaScript para usar la autoevaluación, o <a href="#contacto">contáctanos</a> y la hacemos contigo.</p></noscript>
+      <div class="assess-progress" hidden>
+        <div class="assess-meta">
+          <span class="mono-label" id="assess-fn"></span>
+          <span class="mono-label dim" id="assess-count"></span>
+        </div>
+        <div class="progress-track"><div class="progress-bar" id="assess-bar"></div></div>
+      </div>
+      <form class="assess-form" id="assess-form" hidden novalidate>
+        <fieldset>
+          <legend id="assess-q"></legend>
+          <p class="assess-hint" id="assess-hint"></p>
+          <div class="options" id="assess-options"></div>
+        </fieldset>
+        <div class="assess-nav">
+          <button type="button" class="btn btn-ghost" id="assess-prev" data-i18n="a.prev">Anterior</button>
+          <button type="submit" class="btn btn-primary" id="assess-next" data-i18n="a.next">Siguiente</button>
+        </div>
+      </form>
+      <div class="assess-result" id="assess-result" hidden tabindex="-1" aria-live="polite"></div>
+    </div>
+  </div>
+</section>
+
+<!-- Principles -->
+<section class="section" aria-labelledby="principles-title">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow" data-i18n="p.eyebrow">Cómo trabajamos</p>
+      <h2 id="principles-title" data-i18n="p.title">Ingeniería al servicio de tu seguridad.</h2>
+    </div>
+    <div class="principles">
+      <div class="principle reveal">
+        <h3 data-i18n="p.1.t">Hallazgos verificables</h3>
+        <p data-i18n="p.1.d">Cada hallazgo incluye evidencia y pasos para reproducirlo. Nada de alarmas sin sustento.</p>
+      </div>
+      <div class="principle reveal">
+        <h3 data-i18n="p.2.t">Dos lenguajes, un mensaje</h3>
+        <p data-i18n="p.2.d">Informes ejecutivos para la dirección y técnicos para TI, alineados al mismo plan.</p>
+      </div>
+      <div class="principle reveal">
+        <h3 data-i18n="p.3.t">Confidencialidad desde el inicio</h3>
+        <p data-i18n="p.3.d">Acuerdos de confidencialidad y manejo cifrado de la información de tu organización.</p>
+      </div>
+      <div class="principle reveal">
+        <h3 data-i18n="p.4.t">Alcance a tu medida</h3>
+        <p data-i18n="p.4.d">Recomendamos lo que tu operación necesita, en el orden que más reduce tu riesgo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section section-alt" id="faq" aria-labelledby="faq-title">
+  <div class="container faq-layout">
+    <div>
+      <p class="eyebrow" data-i18n="f.eyebrow">Preguntas frecuentes</p>
+      <h2 id="faq-title" data-i18n="f.title">Lo que suelen preguntarnos.</h2>
+    </div>
+    <div class="faq-list">
+      <details>
+        <summary data-i18n="f.1.q">No sabemos cuál es nuestro nivel de seguridad. ¿Por dónde empezamos?</summary>
+        <p data-i18n="f.1.a">Con la autoevaluación de esta página tendrás una primera idea. El siguiente paso es el diagnóstico de postura: confirma esa idea con evidencia y te entrega una hoja de ruta priorizada.</p>
+      </details>
+      <details>
+        <summary data-i18n="f.2.q">¿Cuál es la diferencia entre un análisis de vulnerabilidades y una prueba de penetración?</summary>
+        <p data-i18n="f.2.a">El análisis de vulnerabilidades identifica debilidades conocidas de forma amplia y automatizada. La prueba de penetración va más allá: un especialista intenta explotarlas y encadenarlas para demostrar el impacto real.</p>
+      </details>
+      <details>
+        <summary data-i18n="f.3.q">¿Una prueba de penetración puede afectar nuestra operación?</summary>
+        <p data-i18n="f.3.a">Acordamos por escrito el alcance, las ventanas de ejecución y los contactos de escalamiento. Las pruebas de mayor riesgo se coordinan contigo y se pueden realizar fuera de horario.</p>
+      </details>
+      <details>
+        <summary data-i18n="f.4.q">¿Trabajan con empresas medianas o solo con grandes corporativos?</summary>
+        <p data-i18n="f.4.a">Con ambas. El alcance se ajusta al tamaño y la complejidad de tu organización, para que la inversión sea proporcional al riesgo.</p>
+      </details>
+      <details>
+        <summary data-i18n="f.5.q">¿Cómo protegen la información que obtienen durante el servicio?</summary>
+        <p data-i18n="f.5.a">Firmamos acuerdos de confidencialidad, limitamos el acceso a quienes participan en el proyecto, ciframos la información en tránsito y en reposo, y la eliminamos al cerrar el proyecto según lo acordado.</p>
+      </details>
+      <details>
+        <summary data-i18n="f.6.q">Estamos sufriendo un incidente ahora. ¿Qué hacemos?</summary>
+        <p data-i18n="f.6.a">No apagues los equipos afectados: aíslalos de la red para conservar evidencia. Escríbenos de inmediato usando el tema «Incidente en curso» en el formulario y te contactaremos con prioridad.</p>
+      </details>
+    </div>
+  </div>
 </section>
 
 <!-- Contact -->
+<section class="section" id="contacto" aria-labelledby="contact-title">
+  <span id="contact" class="anchor-alias" aria-hidden="true"></span>
+  <div class="container contact-layout">
+    <div>
+      <p class="eyebrow" data-i18n="c.eyebrow">Contacto</p>
+      <h2 id="contact-title" data-i18n="c.title">Hablemos de tu seguridad.</h2>
+      <p class="section-lead" data-i18n="c.lead">Cuéntanos tu situación. Una primera conversación no tiene costo y te ayuda a definir el siguiente paso.</p>
+      <ul class="contact-info">
+        <li>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5l8.5 6 8.5-6"/></svg>
+          <div><span class="mono-label" data-i18n="c.email">Correo</span><a href="mailto:contacto@imaengineering.com">contacto@imaengineering.com</a></div>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+          <div><span class="mono-label" data-i18n="c.loc">Ubicación</span><span data-i18n="c.locv">Ciudad de México, México</span></div>
+        </li>
+      </ul>
+      <div class="incident-box">
+        <p class="mono-label alert" data-i18n="c.inc.t">¿Incidente en curso?</p>
+        <p data-i18n="c.inc.d">Selecciona «Incidente en curso» como tema. Estas solicitudes se atienden con prioridad.</p>
+      </div>
+    </div>
 
-<section id="contact">
- <div class="contact-layout">
-   <div>
-     <p class="section-eyebrow" data-es="CONTACTO" data-en="CONTACT">CONTACTO</p>
-     <h2 class="section-title" data-es="Hablemos sobre tu seguridad." data-en="Let's talk about your security.">Hablemos sobre tu seguridad.</h2>
-     <p class="section-desc" data-es="Agenda una consulta gratuita y descubre cómo IMA Engineering puede fortalecer la seguridad de tu empresa." data-en="Schedule a free consultation and discover how IMA Engineering can strengthen your company's security.">
-       Agenda una consulta gratuita y descubre cómo IMA Engineering puede fortalecer la seguridad de tu empresa.
-     </p>
-     <div class="contact-info">
-       <div class="contact-item reveal">
-         <span class="contact-icon">📧</span>
-         <div class="contact-detail">
-           <div class="contact-type" data-es="EMAIL" data-en="EMAIL">EMAIL</div>
-           <div class="contact-val"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="debdb1b0aabfbdaab19eb7b3bfbbb0b9b7b0bbbbacb7b0b9f0bdb1b3">[email&#160;protected]</a></div>
-         </div>
-       </div>
-       <div class="contact-item reveal" style="transition-delay:0.1s">
-         <span class="contact-icon">📱</span>
-         <div class="contact-detail">
-           <div class="contact-type" data-es="TELÉFONO" data-en="PHONE">TELÉFONO</div>
-           <div class="contact-val">+52 (55) 0000-0000</div>
-         </div>
-       </div>
-       <div class="contact-item reveal" style="transition-delay:0.2s">
-         <span class="contact-icon">📍</span>
-         <div class="contact-detail">
-           <div class="contact-type" data-es="UBICACIÓN" data-en="LOCATION">UBICACIÓN</div>
-           <div class="contact-val" data-es="Ciudad de México, México" data-en="Mexico City, Mexico">Ciudad de México, México</div>
-         </div>
-       </div>
-     </div>
-   </div>
-   <div class="reveal" style="transition-delay:0.2s">
-     <div class="contact-form">
-       <div class="form-group">
-         <label class="form-label" data-es="NOMBRE COMPLETO" data-en="FULL NAME">NOMBRE COMPLETO</label>
-         <input class="form-input" type="text" placeholder="John Doe">
-       </div>
-       <div class="form-group">
-         <label class="form-label" data-es="CORREO ELECTRÓNICO" data-en="EMAIL ADDRESS">CORREO ELECTRÓNICO</label>
-         <input class="form-input" type="email" placeholder="john@empresa.com">
-       </div>
-       <div class="form-group">
-         <label class="form-label" data-es="EMPRESA" data-en="COMPANY">EMPRESA</label>
-         <input class="form-input" type="text" placeholder="Tu empresa S.A.">
-       </div>
-       <div class="form-group">
-         <label class="form-label" data-es="MENSAJE" data-en="MESSAGE">MENSAJE</label>
-         <textarea class="form-textarea" placeholder="Cuéntanos sobre tu proyecto..."></textarea>
-       </div>
-       <button class="btn-primary" style="align-self:flex-start; border:none;" onclick="handleSubmit(this)">
-         <span data-es="Enviar mensaje" data-en="Send message">Enviar mensaje</span>
-         <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-       </button>
-     </div>
-   </div>
- </div>
+    <form class="contact-form" id="contact-form" action="mailto:contacto@imaengineering.com" method="post" enctype="text/plain" novalidate data-endpoint="">
+      <div class="field-row">
+        <div class="field">
+          <label for="cf-name" data-i18n="c.f.name">Nombre completo</label>
+          <input id="cf-name" name="nombre" type="text" autocomplete="name" required maxlength="120">
+        </div>
+        <div class="field">
+          <label for="cf-company" data-i18n="c.f.company">Empresa</label>
+          <input id="cf-company" name="empresa" type="text" autocomplete="organization" maxlength="120">
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label for="cf-email" data-i18n="c.f.email">Correo corporativo</label>
+          <input id="cf-email" name="correo" type="email" autocomplete="email" required maxlength="160">
+        </div>
+        <div class="field">
+          <label for="cf-topic" data-i18n="c.f.topic">Tema</label>
+          <div class="select-wrap">
+            <select id="cf-topic" name="tema" required>
+              <option value="diagnostico" data-i18n="c.t.diag">Diagnóstico de postura</option>
+              <option value="pentest" data-i18n="c.t.pentest">Pruebas de penetración</option>
+              <option value="soc" data-i18n="c.t.soc">SOC y monitoreo</option>
+              <option value="nube" data-i18n="c.t.cloud">Seguridad en la nube</option>
+              <option value="ti" data-i18n="c.t.it">TI administrada</option>
+              <option value="cumplimiento" data-i18n="c.t.comp">Cumplimiento normativo</option>
+              <option value="capacitacion" data-i18n="c.t.train">Concientización del personal</option>
+              <option value="incidente" data-i18n="c.t.inc">Incidente en curso</option>
+              <option value="otro" data-i18n="c.t.other">Otro</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="field">
+        <label for="cf-msg" data-i18n="c.f.msg">Mensaje</label>
+        <textarea id="cf-msg" name="mensaje" rows="5" required maxlength="4000" data-i18n-placeholder="c.f.msgph" placeholder="¿Qué te gustaría resolver? No incluyas contraseñas ni datos sensibles."></textarea>
+      </div>
+      <div class="hp" aria-hidden="true">
+        <label for="cf-web">Sitio web</label>
+        <input id="cf-web" name="sitio_web" type="text" tabindex="-1" autocomplete="off">
+      </div>
+      <label class="consent">
+        <input type="checkbox" name="consentimiento" required>
+        <span data-i18n="c.f.consent">He leído el <a href="/aviso-de-privacidad.html">aviso de privacidad</a> y acepto que mis datos se usen para atender esta solicitud.</span>
+      </label>
+      <button type="submit" class="btn btn-primary" data-i18n="c.f.send">Enviar mensaje</button>
+      <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+    </form>
+  </div>
 </section>
 
-<!-- Footer -->
+</main>
 
-<footer>
- <div class="footer-brand">IMA<span>.</span>Engineering</div>
- <p class="footer-copy" data-es="© 2026 IMA Engineering. Todos los derechos reservados." data-en="© 2026 IMA Engineering. All rights reserved.">© 2026 IMA Engineering. Todos los derechos reservados.</p>
- <div class="footer-links">
-   <a href="#" data-es="Privacidad" data-en="Privacy">Privacidad</a>
-   <a href="#" data-es="Términos" data-en="Terms">Términos</a>
-   <a href="#services" data-es="Servicios" data-en="Services">Servicios</a>
- </div>
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div>
+      <a href="#top" class="brand" aria-label="IMA Engineering — inicio">
+        <svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.8l7.6 2.9v5.9c0 4.6-3.2 8.5-7.6 9.6-4.4-1.1-7.6-5-7.6-9.6V5.7L12 2.8z"/><path d="M9 12l2.2 2.2L15.5 10"/></svg>
+        <span class="brand-name">IMA <span>Engineering</span></span>
+      </a>
+      <p class="footer-tag" data-i18n="ft.tag">Ciberseguridad e infraestructura TI.</p>
+    </div>
+    <nav class="footer-links" aria-label="Pie de página">
+      <a href="#servicios" data-i18n="nav.services">Servicios</a>
+      <a href="#autoevaluacion" data-i18n="nav.assessment">Autoevaluación</a>
+      <a href="#contacto" data-i18n="ft.contact">Contacto</a>
+      <a href="/aviso-de-privacidad.html" data-i18n="ft.privacy">Aviso de privacidad</a>
+      <a href="/.well-known/security.txt" data-i18n="ft.disclosure">Reportar una vulnerabilidad</a>
+    </nav>
+    <p class="footer-copy">© <span id="year">2026</span> IMA Engineering. <span data-i18n="ft.rights">Todos los derechos reservados.</span></p>
+  </div>
 </footer>
-
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
- // Cursor
- const cursor = document.getElementById('cursor');
- const ring = document.getElementById('cursorRing');
- let mx = 0, my = 0, rx = 0, ry = 0;
- document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; cursor.style.left = mx+'px'; cursor.style.top = my+'px'; });
- function animRing() {
-   rx += (mx - rx) * 0.12; ry += (my - ry) * 0.12;
-   ring.style.left = rx+'px'; ring.style.top = ry+'px';
-   requestAnimationFrame(animRing);
- }
- animRing();
- document.querySelectorAll('a, button, input, textarea').forEach(el => {
-   el.addEventListener('mouseenter', () => { cursor.style.width='20px'; cursor.style.height='20px'; ring.style.width='60px'; ring.style.height='60px'; ring.style.opacity='0.5'; });
-   el.addEventListener('mouseleave', () => { cursor.style.width='10px'; cursor.style.height='10px'; ring.style.width='36px'; ring.style.height='36px'; ring.style.opacity='1'; });
- });
-
- // Scroll reveal
- const reveals = document.querySelectorAll('.reveal');
- const obs = new IntersectionObserver(entries => {
-   entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
- }, { threshold: 0.15 });
- reveals.forEach(el => obs.observe(el));
-
- // Language toggle
- let lang = 'es';
- function setLang(l) {
-   lang = l;
-   document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.textContent === l.toUpperCase()));
-   document.querySelectorAll('[data-es]').forEach(el => {
-     el.textContent = l === 'es' ? el.dataset.es : el.dataset.en;
-   });
-   // Update placeholder text
-   const placeholders = {
-     es: { name: 'John Doe', email: 'john@empresa.com', company: 'Tu empresa S.A.', msg: 'Cuéntanos sobre tu proyecto...' },
-     en: { name: 'John Doe', email: 'john@company.com', company: 'Your company Inc.', msg: 'Tell us about your project...' }
-   };
-   const inputs = document.querySelectorAll('.form-input, .form-textarea');
-   const ph = placeholders[l];
-   if(inputs[0]) inputs[0].placeholder = ph.name;
-   if(inputs[1]) inputs[1].placeholder = ph.email;
-   if(inputs[2]) inputs[2].placeholder = ph.company;
-   if(inputs[3]) inputs[3].placeholder = ph.msg;
- }
-
-// Form submit
-function handleSubmit(btn) {
-   const span = btn.querySelector('span');
-   const orig = span.textContent;
-   span.textContent = lang === 'es' ? '✓ Enviado!' : '✓ Sent!';
-   btn.style.background = '#30d158';
-   setTimeout(() => { span.textContent = orig; btn.style.background = ''; }, 3000);
-}
-</script>
 
 </body>
 </html>
