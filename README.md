@@ -20,15 +20,12 @@ Sitio estático (HTML, CSS y JavaScript sin dependencias ni paso de compilación
 
 ## Formulario de contacto
 
-Sin configuración, el formulario abre el cliente de correo del visitante con el mensaje listo para `contacto@imaengineering.com.mx`.
+El formulario envía los datos a un script de Google Apps Script en la cuenta de Google Workspace, que guarda cada mensaje en una hoja de Google Sheets y manda un aviso a `contacto@imaengineering.com.mx` (con "Responder a" al visitante).
 
-Para recibir los mensajes directamente (sin que el visitante use su correo), crea un formulario en un servicio como Formspree y pega su URL en el atributo `data-endpoint` del `<form id="contact-form">` en `index.html`:
-
-```html
-<form class="contact-form" id="contact-form" ... data-endpoint="https://formspree.io/f/XXXXXXXX">
-```
-
-Si usas otro servicio, agrega su dominio a `connect-src` y `form-action` en `_headers`.
+- La URL del script va en el atributo `data-endpoint` del `<form id="contact-form">` en `index.html`.
+- Si `data-endpoint` está vacío, el formulario abre el cliente de correo del visitante con el mensaje listo.
+- El código del script no se publica en este repositorio; se edita desde Extensiones → Apps Script en la hoja de cálculo.
+- Si cambias de servicio, actualiza `connect-src` en `_headers`.
 
 ## Vista local
 

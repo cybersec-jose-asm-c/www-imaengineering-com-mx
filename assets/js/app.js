@@ -614,12 +614,18 @@
       if (endpoint) {
         submitBtn.disabled = true;
         setStatus(ui("sending"));
-        var data = new FormData(form);
-        data.append("_subject", "[Web] " + topicText + " — " + name.value.trim());
+        // URLSearchParams se envía como x-www-form-urlencoded: no requiere preflight CORS
+        // y Google Apps Script lo recibe en e.parameter.
+        var data = new URLSearchParams();
+        new FormData(form).forEach(function (v, k) { data.append(k, v); });
         data.append("idioma", lang);
-        fetch(endpoint, { method: "POST", body: data, headers: { "Accept": "application/json" } })
+        fetch(endpoint, { method: "POST", body: data, redirect: "follow" })
           .then(function (res) {
             if (!res.ok) throw new Error("HTTP " + res.status);
+            return res.json();
+          })
+          .then(function (json) {
+            if (!json || json.ok !== true) throw new Error((json && json.error) || "error");
             setStatus(ui("sent"), "ok");
             form.reset();
           })
