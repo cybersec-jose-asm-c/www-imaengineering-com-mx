@@ -2,7 +2,7 @@
 (function () {
   "use strict";
 
-  var CONTACT_EMAIL = "contacto@imaengineering.com";
+  var CONTACT_EMAIL = "contacto@imaengineering.com.mx";
 
   /* ------------------------------------------------------------------
    * Textos en inglés. El español vive en el HTML y se captura al cargar.

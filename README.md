@@ -20,7 +20,7 @@ Sitio estático (HTML, CSS y JavaScript sin dependencias ni paso de compilación
 
 ## Formulario de contacto
 
-Sin configuración, el formulario abre el cliente de correo del visitante con el mensaje listo para `contacto@imaengineering.com`.
+Sin configuración, el formulario abre el cliente de correo del visitante con el mensaje listo para `contacto@imaengineering.com.mx`.
 
 Para recibir los mensajes directamente (sin que el visitante use su correo), crea un formulario en un servicio como Formspree y pega su URL en el atributo `data-endpoint` del `<form id="contact-form">` en `index.html`:
 
