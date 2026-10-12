@@ -12,7 +12,7 @@ Sitio estático (HTML, CSS y JavaScript sin dependencias ni paso de compilación
 | `assets/css/styles.css` | Estilos |
 | `assets/js/app.js` | Menú móvil, idioma ES/EN, autoevaluación NIST CSF 2.0 y formulario |
 | `assets/fonts/` | Inter y JetBrains Mono alojadas localmente (licencia SIL OFL) |
-| `aviso-de-privacidad.html` | Aviso de privacidad |
+| `aviso-de-privacidad` | Aviso de privacidad |
 | `404.html` | Página de error |
 | `.well-known/security.txt` | Contacto para divulgación responsable (renovar `Expires` antes de que venza) |
 | `_headers` | Encabezados de seguridad (CSP, HSTS, etc.) para Cloudflare Pages |

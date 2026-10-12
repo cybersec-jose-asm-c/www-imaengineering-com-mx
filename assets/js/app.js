@@ -120,7 +120,7 @@
     "c.t.train": "Security awareness", "c.t.inc": "Active incident", "c.t.other": "Other",
     "c.f.msg": "Message",
     "c.f.msgph": "What would you like to solve? Please don't include passwords or sensitive data.",
-    "c.f.consent": "I have read the <a href=\"/aviso-de-privacidad.html\">privacy notice</a> (Spanish) and agree to my data being used to handle this request.",
+    "c.f.consent": "I have read the <a href=\"/aviso-de-privacidad\">privacy notice</a> (Spanish) and agree to my data being used to handle this request.",
     "c.f.send": "Send message",
     "ft.tag": "Cybersecurity &amp; IT infrastructure.",
     "ft.contact": "Contact",
