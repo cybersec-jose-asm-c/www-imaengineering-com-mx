@@ -163,6 +163,8 @@
       sent: "Gracias. Recibimos tu mensaje y te responderemos pronto.",
       sendErr: "No pudimos enviar el mensaje. Escríbenos directamente a " + CONTACT_EMAIL + ".",
       mailto: "Abrimos tu aplicación de correo con el mensaje listo; solo falta enviarlo. Si no se abrió, escríbenos a " + CONTACT_EMAIL + ".",
+      captcha: "Completa la verificación de seguridad antes de enviar.",
+      captchaFail: "No pudimos confirmar la verificación de seguridad. Inténtalo de nuevo.",
       subject: "Solicitud desde el sitio web"
     },
     en: {
@@ -186,6 +188,8 @@
       sent: "Thank you. We received your message and will reply soon.",
       sendErr: "We couldn't send your message. Please write to us directly at " + CONTACT_EMAIL + ".",
       mailto: "We opened your email app with the message ready; you just need to send it. If it didn't open, write to us at " + CONTACT_EMAIL + ".",
+      captcha: "Please complete the security check before sending.",
+      captchaFail: "We couldn't confirm the security check. Please try again.",
       subject: "Website enquiry"
     }
   };
@@ -570,6 +574,39 @@
     var status = $("#form-status");
     var submitBtn = $('button[type="submit"]', form);
     var emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+    var endpoint = (form.getAttribute("data-endpoint") || "").trim();
+
+    /* Cloudflare Turnstile: solo cuando hay endpoint y clave del sitio. El script se
+       carga desde aquí (no con <script> en el HTML) para que el callback ya exista. */
+    var tsBox = $("#cf-turnstile", form);
+    var tsSitekey = tsBox ? (tsBox.getAttribute("data-sitekey") || "").trim() : "";
+    var tsId = null;
+    var tsBroken = false;
+    if (endpoint && tsSitekey) {
+      window.imaTurnstileReady = function () {
+        try {
+          tsId = window.turnstile.render(tsBox, {
+            sitekey: tsSitekey,
+            action: "contact",
+            theme: "dark",
+            language: lang,
+            "error-callback": function () { tsBroken = true; }
+          });
+        } catch (e) { tsBroken = true; }
+      };
+      var tsScript = document.createElement("script");
+      tsScript.src = "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=imaTurnstileReady";
+      tsScript.async = true;
+      tsScript.onerror = function () { tsBroken = true; };
+      document.head.appendChild(tsScript);
+    }
+    function turnstileToken() {
+      if (tsId === null || !window.turnstile) return "";
+      return window.turnstile.getResponse(tsId) || "";
+    }
+    function resetTurnstile() {
+      if (tsId !== null && window.turnstile) window.turnstile.reset(tsId);
+    }
 
     function setStatus(text, kind) {
       status.textContent = text;
@@ -609,9 +646,14 @@
 
       var topicSel = form.elements["tema"];
       var topicText = topicSel.options[topicSel.selectedIndex].text;
-      var endpoint = (form.getAttribute("data-endpoint") || "").trim();
 
       if (endpoint) {
+        // El token de Turnstile viaja en el campo oculto cf-turnstile-response que el
+        // propio widget agrega dentro del formulario.
+        if (tsSitekey && !turnstileToken()) {
+          setStatus(tsBroken ? ui("sendErr") : ui("captcha"), "error");
+          return;
+        }
         submitBtn.disabled = true;
         setStatus(ui("sending"));
         // URLSearchParams se envía como x-www-form-urlencoded: no requiere preflight CORS
@@ -629,8 +671,14 @@
             setStatus(ui("sent"), "ok");
             form.reset();
           })
-          .catch(function () { setStatus(ui("sendErr"), "error"); })
-          .then(function () { submitBtn.disabled = false; });
+          .catch(function (err) {
+            setStatus(err && err.message === "captcha" ? ui("captchaFail") : ui("sendErr"), "error");
+          })
+          .then(function () {
+            // Los tokens son de un solo uso: siempre se pide uno nuevo tras cada intento.
+            resetTurnstile();
+            submitBtn.disabled = false;
+          });
         return;
       }
 

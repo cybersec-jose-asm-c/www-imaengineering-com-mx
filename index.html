@@ -391,7 +391,7 @@
       </div>
     </div>
 
-    <form class="contact-form" id="contact-form" action="mailto:contacto@imaengineering.com.mx" method="post" enctype="text/plain" novalidate data-endpoint="https://script.google.com/macros/s/AKfycbzgKtANRmc7AVUzpFrGL4bm3VHxTHNglAPPRWrinMG3oj0Am-L0MEJ1S_IWmsJgCCaM/exec">
+    <form class="contact-form" id="contact-form" action="mailto:contacto@imaengineering.com.mx" method="post" enctype="text/plain" novalidate data-endpoint="https://script.google.com/macros/s/AKfycbxAOHVxC9kNfpGhMrmWvlAza-ZZHig5KB-VdxibUoMdFjwQEW_0pLvRC3wn8W6zklVyrA/exec">
       <div class="field-row">
         <div class="field">
           <label for="cf-name" data-i18n="c.f.name">Nombre completo</label>
@@ -432,6 +432,8 @@
         <label for="cf-web">Sitio web</label>
         <input id="cf-web" name="sitio_web" type="text" tabindex="-1" autocomplete="off">
       </div>
+      <!-- Cloudflare Turnstile: app.js lo dibuja si data-sitekey tiene la clave del sitio. -->
+      <div class="turnstile-box" id="cf-turnstile" data-sitekey="0x4AAAAAAGD6oTAaFP96-VYC"></div>
       <label class="consent">
         <input type="checkbox" name="consentimiento" required>
         <span data-i18n="c.f.consent">He leído el <a href="/aviso-de-privacidad">aviso de privacidad</a> y acepto que mis datos se usen para atender esta solicitud.</span>

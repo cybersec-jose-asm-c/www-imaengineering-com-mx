@@ -517,6 +517,8 @@ p { text-wrap: pretty; }
 .consent input[aria-invalid="true"] { border-color: var(--alert); }
 .consent a { color: var(--accent); text-underline-offset: 3px; }
 .contact-form .btn { justify-self: start; }
+.turnstile-box { max-width: 100%; overflow: hidden; }
+.turnstile-box:empty { display: none; }
 .form-status { font-size: 0.9375rem; min-height: 1.5em; }
 .form-status.is-error { color: var(--alert); }
 .form-status.is-ok { color: var(--ok); }
