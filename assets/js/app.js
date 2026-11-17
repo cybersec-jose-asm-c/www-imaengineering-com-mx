@@ -880,7 +880,20 @@
       R = compact ? Math.max(70, Math.min(W, H) * 0.24) : Math.min(180, Math.max(120, W * 0.11));
       var rand = rng(11), step = compact ? 40 : 62;
       var spots = SCAN_SPOTS[compact ? "compact" : "wide"];
-      vulns = spots.map(function (p) { return { x: p[0] * W, y: p[1] * H }; });
+      // En pantalla ancha los hallazgos van a la derecha de donde termina el texto real.
+      var x0 = 0, x1 = W;
+      if (!compact) {
+        var textRight = 0;
+        $all(".hero h1, .hero .lead").forEach(function (el) {
+          var rg = document.createRange(); rg.selectNodeContents(el);
+          textRight = Math.max(textRight, rg.getBoundingClientRect().right - r.left);
+        });
+        x0 = Math.min(textRight + 60, W * 0.62); x1 = W - 56;
+      }
+      vulns = spots.map(function (p) {
+        var x = compact ? p[0] * W : x0 + (p[0] - 0.58) / 0.35 * (x1 - x0);
+        return { x: x, y: p[1] * H };
+      });
       nodes = [];
       for (var y = step * 0.6; y < H; y += step) {
         for (var x = step * 0.6; x < W; x += step) {
@@ -1089,6 +1102,7 @@
     hero.addEventListener("pointerdown", onPointer);
     if ("ResizeObserver" in window) new ResizeObserver(function () { if (layout() && !raf) draw(performance.now()); }).observe(box);
     else window.addEventListener("resize", layout);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { layout(); });
     if ("IntersectionObserver" in window) {
       new IntersectionObserver(function (en) { visible = en[0].isIntersecting; resume(); }).observe(box);
     }
