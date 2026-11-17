@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-page="home">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -24,8 +24,8 @@
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
 
-  <link rel="stylesheet" href="/assets/css/styles.css?v=20261116c">
-  <script src="/assets/js/app.js?v=20261116c" defer></script>
+  <link rel="stylesheet" href="/assets/css/styles.css?v=20261117">
+  <script src="/assets/js/app.js?v=20261117" defer></script>
 
   <script type="application/ld+json">
   {
@@ -58,6 +58,7 @@
         <li><a href="#metodo" data-i18n="nav.method">Método</a></li>
         <li><a href="#autoevaluacion" data-i18n="nav.assessment">Autoevaluación</a></li>
         <li><a href="#faq" data-i18n="nav.faq">Preguntas</a></li>
+        <li><a href="/nosotros" data-i18n="nav.about">Nosotros</a></li>
         <li class="nav-cta-mobile"><a href="#contacto" class="btn btn-primary btn-block" data-i18n="nav.contact">Agendar diagnóstico</a></li>
       </ul>
     </nav>
@@ -122,6 +123,48 @@
           <li>NIST CSF 2.0</li><li>CIS Controls v8</li><li>ISO/IEC 27001:2022</li><li>OWASP Top 10</li><li>MITRE ATT&amp;CK</li><li>PCI DSS 4.0</li><li>SOC 2</li><li>LFPDPPP</li>
           <li aria-hidden="true">NIST CSF 2.0</li><li aria-hidden="true">CIS Controls v8</li><li aria-hidden="true">ISO/IEC 27001:2022</li><li aria-hidden="true">OWASP Top 10</li><li aria-hidden="true">MITRE ATT&amp;CK</li><li aria-hidden="true">PCI DSS 4.0</li><li aria-hidden="true">SOC 2</li><li aria-hidden="true">LFPDPPP</li>
         </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Problemas por rol -->
+  <section class="section" id="problemas" aria-labelledby="pains-title">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow" data-i18n="pn.eyebrow">Lo que escuchamos cada semana</p>
+          <h2 id="pains-title" data-i18n="pn.title">Si alguna de estas frases es tuya, no eres el único.</h2>
+        </div>
+        <p class="lead" data-i18n="pn.lead">Cada rol tiene un problema distinto. Los tres comparten la misma causa: no saber, con evidencia, dónde están parados.</p>
+      </div>
+      <div class="pains">
+        <article class="pain">
+          <header class="pain-head"><span class="chip fn">CISO</span><h3 data-i18n="pn.1.t">Dirección de seguridad</h3></header>
+          <ul class="quotes">
+            <li data-i18n="pn.1.a">«El consejo pregunta qué tan seguros estamos y no tengo un número que defender.»</li>
+            <li data-i18n="pn.1.b">«Tengo presupuesto para tres iniciativas y una lista de cuarenta.»</li>
+            <li data-i18n="pn.1.c">«La auditoría llega en seis meses y la evidencia está en veinte carpetas.»</li>
+          </ul>
+          <p class="fix"><b data-i18n="pn.fix">Lo que cambia:</b> <span data-i18n="pn.1.f">un mapa de madurez NIST CSF 2.0 respaldado por evidencia y una hoja de ruta priorizada por riesgo que puedes presentar al consejo.</span></p>
+        </article>
+        <article class="pain">
+          <header class="pain-head"><span class="chip fn">IT</span><h3 data-i18n="pn.2.t">TI e infraestructura</h3></header>
+          <ul class="quotes">
+            <li data-i18n="pn.2.a">«El escáner me entrega tres mil vulnerabilidades. ¿Cuál parcho primero?»</li>
+            <li data-i18n="pn.2.b">«Somos tres personas para cientos de equipos, la nube y los usuarios.»</li>
+            <li data-i18n="pn.2.c">«Nadie ha probado restaurar los respaldos completos.»</li>
+          </ul>
+          <p class="fix"><b data-i18n="pn.fix">Lo que cambia:</b> <span data-i18n="pn.2.f">hallazgos ordenados por impacto real, con pasos de corrección concretos y una verificación cuando terminas.</span></p>
+        </article>
+        <article class="pain">
+          <header class="pain-head"><span class="chip fn">SecOps</span><h3 data-i18n="pn.3.t">Operaciones de seguridad</h3></header>
+          <ul class="quotes">
+            <li data-i18n="pn.3.a">«Hay tantas alertas que lo importante se pierde en el ruido.»</li>
+            <li data-i18n="pn.3.b">«Los registros del firewall se borran a los siete días.»</li>
+            <li data-i18n="pn.3.c">«El plan de respuesta existe, pero nadie lo ha ensayado.»</li>
+          </ul>
+          <p class="fix"><b data-i18n="pn.fix">Lo que cambia:</b> <span data-i18n="pn.3.f">casos de uso de detección mapeados a MITRE ATT&amp;CK, retención que sirve para investigar y un ejercicio de mesa con tu equipo.</span></p>
+        </article>
       </div>
     </div>
   </section>
@@ -302,7 +345,10 @@
           <li><b data-i18n="d.4.t">Hoja de ruta.</b> <span data-i18n="d.4.d">Acciones a corto, mediano y largo plazo, con responsables sugeridos.</span></li>
           <li><b data-i18n="d.5.t">Sesión de resultados.</b> <span data-i18n="d.5.d">Revisamos el informe con tu equipo y resolvemos dudas.</span></li>
         </ul>
-        <a href="#contacto" class="btn btn-primary" data-topic="diagnostico"><span data-i18n="d.cta">Solicitar diagnóstico</span> <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+        <div class="hero-ctas">
+          <a href="#contacto" class="btn btn-primary" data-topic="diagnostico"><span data-i18n="d.cta">Solicitar diagnóstico</span> <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+          <a href="/servicios/diagnostico" class="btn btn-ghost" data-i18n="d.more">Ver alcance y cómo cotizamos</a>
+        </div>
       </div>
 
       <figure class="report" aria-labelledby="report-cap">
@@ -332,21 +378,38 @@
     </div>
   </section>
 
-  <!-- Principles -->
-  <section class="section" aria-labelledby="principles-title">
+  <!-- Confianza -->
+  <section class="section" id="confianza" aria-labelledby="trust-title">
     <div class="container">
       <div class="section-head">
         <div>
           <p class="eyebrow" data-i18n="p.eyebrow">Cómo trabajamos</p>
-          <h2 id="principles-title" data-i18n="p.title">Ingeniería al servicio de tu seguridad.</h2>
+          <h2 id="trust-title" data-i18n="p.title">Reglas que puedes verificar antes de firmar.</h2>
         </div>
-        <p class="lead" data-i18n="p.lead">Cuatro compromisos que aplican a cada proyecto, sin importar su tamaño.</p>
+        <p class="lead" data-i18n="p.lead">No te pedimos fe. Cada compromiso de esta lista queda por escrito o lo puedes comprobar hoy en este mismo sitio.</p>
       </div>
       <div class="principles">
-        <div class="pr"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 11l3 3 8-8"/><path d="M20 12v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h9"/></svg><h3 data-i18n="p.1.t">Hallazgos verificables</h3><p data-i18n="p.1.d">Cada hallazgo incluye evidencia y pasos para reproducirlo. Nada de alarmas sin sustento.</p></div>
-        <div class="pr"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h10M4 12h16M4 18h7"/></svg><h3 data-i18n="p.2.t">Dos lenguajes, un plan</h3><p data-i18n="p.2.d">Informes ejecutivos para la dirección y técnicos para TI, alineados a la misma hoja de ruta.</p></div>
-        <div class="pr"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><h3 data-i18n="p.3.t">Confidencialidad desde el inicio</h3><p data-i18n="p.3.d">Acuerdos de confidencialidad y manejo cifrado de la información de tu organización.</p></div>
-        <div class="pr"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/></svg><h3 data-i18n="p.4.t">Alcance a tu medida</h3><p data-i18n="p.4.d">Recomendamos lo que tu operación necesita, en el orden que más reduce tu riesgo.</p></div>
+        <div class="pr"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><h3 data-i18n="p.1.t">Confidencialidad primero</h3><p data-i18n="p.1.d">Firmamos el acuerdo de confidencialidad antes de recibir el primer documento. La información viaja y se guarda cifrada.</p></div>
+        <div class="pr"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h10M4 18h7"/><path d="M17 15l2 2 3-3"/></svg><h3 data-i18n="p.2.t">Alcance por escrito</h3><p data-i18n="p.2.d">Qué se prueba, cuándo y a quién llamar si algo pasa. Nada se toca fuera de lo acordado.</p></div>
+        <div class="pr"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 11l3 3 8-8"/><path d="M20 12v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h9"/></svg><h3 data-i18n="p.3.t">Evidencia reproducible</h3><p data-i18n="p.3.d">Cada hallazgo trae pasos para reproducirlo, severidad CVSS y referencia a ATT&amp;CK o CIS. Sin alarmas sin sustento.</p></div>
+        <div class="pr"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 0 1 14-5.3M20 12a8 8 0 0 1-14 5.3"/><path d="M18 3v4h-4M6 21v-4h4"/></svg><h3 data-i18n="p.4.t">Verificamos la corrección</h3><p data-i18n="p.4.d">El trabajo no termina con el informe. Volvemos a probar y confirmamos que el hallazgo quedó cerrado.</p></div>
+        <div class="pr"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.8l7.6 2.9v5.9c0 4.6-3.2 8.5-7.6 9.6-4.4-1.1-7.6-5-7.6-9.6V5.7L12 2.8z"/><path d="M12 8v4M12 15.5h.01"/></svg><h3 data-i18n="p.5.t">Practicamos lo que pedimos</h3><p data-i18n="p.5.d">Este sitio publica <a href="/.well-known/security.txt">security.txt</a>, encabezados de seguridad estrictos y un formulario con protección contra bots.</p></div>
+        <div class="pr"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/></svg><h3 data-i18n="p.6.t">Nada se envía sin permiso</h3><p data-i18n="p.6.d">La autoevaluación corre completa en tu navegador. Tus respuestas no llegan a ningún servidor, tampoco al nuestro.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Llamada final -->
+  <section class="cta-band" aria-labelledby="band-title">
+    <div class="container cta-band-inner">
+      <div>
+        <p class="eyebrow" data-i18n="band.eyebrow">Siguiente paso</p>
+        <h2 id="band-title" data-i18n="band.title">Tu próximo hallazgo crítico ya existe. <em>Decide quién lo encuentra primero.</em></h2>
+        <p class="lead" data-i18n="band.lead">Cuéntanos tu contexto. Te respondemos en un día hábil con una propuesta de alcance, sin compromiso.</p>
+      </div>
+      <div class="cta-band-actions">
+        <a href="#contacto" class="btn btn-primary btn-lg" data-topic="diagnostico"><span data-i18n="band.cta1">Agendar diagnóstico</span> <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+        <a href="#autoevaluacion" class="btn btn-ghost btn-lg" data-i18n="band.cta2">Primero, la autoevaluación</a>
       </div>
     </div>
   </section>
@@ -363,6 +426,10 @@
         <details open>
           <summary><span data-i18n="f.1.q">No sabemos cuál es nuestro nivel de seguridad. ¿Por dónde empezamos?</span><span class="pm" aria-hidden="true"></span></summary>
           <p data-i18n="f.1.a">Con la autoevaluación de esta página tendrás una primera idea. El siguiente paso es el diagnóstico de postura: confirma esa idea con evidencia y te entrega una hoja de ruta priorizada.</p>
+        </details>
+        <details>
+          <summary><span data-i18n="f.7.q">¿Cuánto cuesta trabajar con ustedes?</span><span class="pm" aria-hidden="true"></span></summary>
+          <p data-i18n="f.7.a">Depende del alcance: cuántos entornos, sistemas y áreas entran. No publicamos precio de lista porque un paquete fijo te haría pagar de más o quedarte corto. Después de una llamada sin costo te enviamos una propuesta por escrito con alcance, entregables, calendario y precio. <a href="/servicios/diagnostico#precio">Así cotizamos el diagnóstico.</a></p>
         </details>
         <details>
           <summary><span data-i18n="f.2.q">¿Cuál es la diferencia entre un análisis de vulnerabilidades y una prueba de penetración?</span><span class="pm" aria-hidden="true"></span></summary>
@@ -478,6 +545,8 @@
       </div>
       <nav class="footer-links" aria-label="Pie de página">
         <a href="#servicios" data-i18n="nav.services">Servicios</a>
+        <a href="/servicios/diagnostico" data-i18n="ft.diag">Diagnóstico de postura</a>
+        <a href="/nosotros" data-i18n="nav.about">Nosotros</a>
         <a href="#autoevaluacion" data-i18n="nav.assessment">Autoevaluación</a>
         <a href="#contacto" data-i18n="ft.contact">Contacto</a>
         <a href="/aviso-de-privacidad" data-i18n="ft.privacy">Aviso de privacidad</a>
@@ -488,5 +557,6 @@
     <p class="footer-copy">© <span id="year">2026</span> IMA Engineering. <span data-i18n="ft.rights">Todos los derechos reservados.</span></p>
   </div>
 </footer>
+<a href="#contacto" class="m-cta" id="m-cta" data-topic="diagnostico"><span data-i18n="mcta">Agendar diagnóstico</span> <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
 </body>
 </html>

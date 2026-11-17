@@ -33,6 +33,117 @@
     "scan.sr": "Illustrative simulation: a scan sweeps an example network and reveals six findings, from a VPN without multi-factor authentication to missing HTTP headers.",
     "card.privacy": "Your answers stay in your browser. Nothing is sent.",
     "fn.GV": "Govern", "fn.ID": "Identify", "fn.PR": "Protect", "fn.DE": "Detect", "fn.RS": "Respond", "fn.RC": "Recover",
+    "nav.about": "About",
+    "mcta": "Book an assessment",
+    "ft.diag": "Posture assessment",
+    "d.more": "See scope and how we quote",
+    "pn.eyebrow": "What we hear every week",
+    "pn.title": "If any of these sound like you, you're not alone.",
+    "pn.lead": "Each role has a different problem. All three share the same cause: not knowing, with evidence, where they stand.",
+    "pn.fix": "What changes:",
+    "pn.1.t": "Security leadership",
+    "pn.1.a": "“The board asks how secure we are and I don't have a number I can defend.”",
+    "pn.1.b": "“I have budget for three initiatives and a list of forty.”",
+    "pn.1.c": "“The audit is six months out and the evidence is spread across twenty folders.”",
+    "pn.1.f": "a NIST CSF 2.0 maturity map backed by evidence and a risk-ranked roadmap you can take to the board.",
+    "pn.2.t": "IT and infrastructure",
+    "pn.2.a": "“The scanner hands me three thousand vulnerabilities. Which do I patch first?”",
+    "pn.2.b": "“We're three people for hundreds of endpoints, the cloud and the users.”",
+    "pn.2.c": "“Nobody has ever tested a full backup restore.”",
+    "pn.2.f": "findings ranked by real impact, with concrete fix steps and a verification once you're done.",
+    "pn.3.t": "Security operations",
+    "pn.3.a": "“There are so many alerts that what matters gets lost in the noise.”",
+    "pn.3.b": "“Firewall logs are deleted after seven days.”",
+    "pn.3.c": "“The response plan exists, but nobody has ever rehearsed it.”",
+    "pn.3.f": "detection use cases mapped to MITRE ATT&amp;CK, retention that actually supports investigations and a tabletop exercise with your team.",
+    "band.eyebrow": "Next step",
+    "band.title": "Your next critical finding already exists. <em>Decide who finds it first.</em>",
+    "band.lead": "Tell us about your environment. We'll reply within one business day with a scope proposal, no strings attached.",
+    "band.cta1": "Book an assessment",
+    "band.cta2": "Start with the self-assessment",
+    "f.7.q": "How much does it cost to work with you?",
+    "f.7.a": "It depends on scope: how many environments, systems and teams are included. We don't publish a list price because a fixed package would make you overpay or fall short. After a free call we send a written proposal with scope, deliverables, timeline and price. <a href=\"/servicios/diagnostico#precio\">Here's how we quote the assessment.</a>",
+    "sd.crumb": "Posture assessment",
+    "sd.title": "Stop guessing <em>what to fix first.</em>",
+    "sd.lead": "We measure your real posture across the six NIST CSF 2.0 functions, with evidence, and hand you a roadmap leadership understands and your team can start on Monday.",
+    "sd.cta1": "Request a proposal",
+    "sd.cta2": "See what's included",
+    "sd.spec": "Spec sheet",
+    "sd.s1": "Framework", "sd.s2": "Testing", "sd.s2v": "Non-intrusive technical tests",
+    "sd.s3": "Deliverables", "sd.s3v": "5, including the results session",
+    "sd.s4": "Price", "sd.s4v": "In writing, based on your scope",
+    "sd.s5": "Response", "sd.s5v": "Within one business day",
+    "sd.b.eyebrow": "Who it's for",
+    "sd.b.title": "One assessment, three answers you needed.",
+    "sd.b.lead": "The report speaks two languages: business risk and technical detail. Both point to the same roadmap.",
+    "sd.b.1.t": "A number you can defend", "sd.b.1.d": "Your level per function, the evidence behind it and an executive summary ready for the board. Priorities justified by risk, not gut feeling.",
+    "sd.b.2.t": "A short, ordered list", "sd.b.2.d": "Findings with CVSS severity, impact and the specific fix. You know what comes first and what can wait.",
+    "sd.b.3.t": "Detection gaps in plain sight", "sd.b.3.d": "What you log, how long you keep it and what you're not seeing, mapped to the Detect and Respond functions.",
+    "sd.i.eyebrow": "What's included",
+    "sd.i.title": "Five deliverables. Zero filler.",
+    "sd.h.eyebrow": "How it works",
+    "sd.h.title": "Four phases, no surprises.",
+    "sd.h.lead": "At every moment you know what we're doing, with whom and what comes next.",
+    "sd.h.1.t": "Kickoff", "sd.h.1.d": "We sign the NDA, lock scope and schedule, and name an owner on each side.",
+    "sd.h.2.t": "Interviews and documents", "sd.h.2.d": "We talk to key teams and review the policies, inventories and processes you already have.",
+    "sd.h.3.t": "Technical testing", "sd.h.3.d": "We review configuration and exposure without disrupting operations, and check what's said against what's there.",
+    "sd.h.4.t": "Report and session", "sd.h.4.d": "We deliver the five documents and walk through them with you until no question is left.",
+    "sd.p.eyebrow": "Pricing",
+    "sd.p.title": "No list price. A clear price.",
+    "sd.p.lead": "A fixed package would make you pay for what you don't need or fall short. We quote your scope and put it in writing before we start.",
+    "sd.p.f.t": "What it depends on",
+    "sd.p.f.1": "Number of sites and environments (on-prem, cloud, hybrid)",
+    "sd.p.f.2": "Systems, network ranges and applications in scope",
+    "sd.p.f.3": "Teams and people to interview",
+    "sd.p.f.4": "Additional frameworks: ISO/IEC 27001, PCI DSS or LFPDPPP",
+    "sd.p.s.t": "How we quote",
+    "sd.p.s.1t": "You tell us your context.", "sd.p.s.1d": "Using the form below, in five minutes.",
+    "sd.p.s.2t": "Scoping call.", "sd.p.s.2d": "Free and with no commitment.",
+    "sd.p.s.3t": "Written proposal.", "sd.p.s.3d": "Scope, deliverables, timeline and price.",
+    "sd.p.in.t": "Included",
+    "sd.p.in.1": "Interviews and document review", "sd.p.in.2": "Non-intrusive technical testing",
+    "sd.p.in.3": "All five deliverables", "sd.p.in.4": "Results session with your team",
+    "sd.p.out.t": "Quoted separately",
+    "sd.p.out.1": "Intrusive penetration testing", "sd.p.out.2": "Remediation performed by us", "sd.p.out.3": "Continuous monitoring (SOC)",
+    "sd.f.title": "Before you request the proposal.",
+    "sd.f.1.q": "Why don't you publish a price?",
+    "sd.f.1.a": "Because one price for every company is unfair to almost all of them. One site with fifty endpoints doesn't cost the same as three sites with hybrid cloud. We give you a written price for your scope before we start, and that's the price.",
+    "sd.f.2.q": "Can the technical tests disrupt operations?",
+    "sd.f.2.a": "The assessment uses non-intrusive tests: we review configuration and exposure, we don't try to exploit anything. We still agree on windows and escalation contacts in writing.",
+    "sd.f.3.q": "What do you need from my team?",
+    "sd.f.3.a": "One coordinator, access to whatever documentation exists and a few interviews with key teams. If the documentation doesn't exist, that's a finding too, and we record it without judgment.",
+    "sd.f.4.q": "And after the assessment?",
+    "sd.f.4.a": "You keep the report and the roadmap even if you hire nothing else. If you want, we support the remediation or do it ourselves, and then verify every fix.",
+    "sd.r.eyebrow": "Request a proposal",
+    "sd.r.title": "Five minutes now. Clarity for months.",
+    "sd.r.lead": "Tell us how many sites, which environments and what worries you. We'll reply within one business day to schedule the scoping call.",
+    "sd.r.1": "No cost or commitment until you accept the proposal.",
+    "sd.r.2": "NDA signed before you share any documents.",
+    "sd.r.3": "Don't include passwords or sensitive data in your message.",
+    "ab.eyebrow": "About",
+    "ab.title": "Security explained with evidence, <em>not fear.</em>",
+    "ab.lead": "IMA Engineering is a cybersecurity and IT infrastructure consultancy in Mexico City. We're engineers before we're salespeople: we measure, show the evidence and tell you what to do first.",
+    "ab.m.eyebrow": "Mission",
+    "ab.m.text": "Make sure every organization we work with knows <em>where it's exposed</em>, <em>what to fix first</em> and <em>how to prove</em> it was fixed.",
+    "ab.m.lead": "Security doesn't improve with more alerts or longer reports. It improves when leadership and the technical team look at the same map and move in the same order.",
+    "ab.n.eyebrow": "What you'll never get from us",
+    "ab.n.title": "Some things this industry made normal. We didn't.",
+    "ab.n.lead": "These are the ones we hear most from teams that have worked with other providers.",
+    "ab.n.1t": "300-page reports", "ab.n.1d": "nobody reads. We deliver what gets used: a summary, a map, a ranked list and a plan.",
+    "ab.n.2t": "Alarms without evidence", "ab.n.2d": "to sell urgency. If we can't reproduce it, it doesn't go in the report.",
+    "ab.n.3t": "Generic packages", "ab.n.3d": "that charge one site the same as ten. Scope fits your operation.",
+    "ab.n.4t": "One report and goodbye", "ab.n.4d": "The work ends when we've verified the fix works.",
+    "ab.w.eyebrow": "Why work with us",
+    "ab.w.title": "Six reasons, all verifiable.",
+    "ab.w.lead": "If any of them doesn't hold, you have our email to call us on it.",
+    "ab.w.1t": "One map, two languages", "ab.w.1d": "An executive report for leadership and a technical one for IT, aligned to the same roadmap.",
+    "ab.w.2t": "Recognized frameworks", "ab.w.2d": "NIST CSF 2.0, CIS Controls v8, ISO/IEC 27001, OWASP and MITRE ATT&amp;CK. Nothing made up.",
+    "ab.w.3t": "Evidence in every finding", "ab.w.3d": "Steps to reproduce it, CVSS severity and the specific fix.",
+    "ab.w.4t": "Confidential from day zero", "ab.w.4d": "NDA signed before the first document, and information encrypted in transit and at rest.",
+    "ab.w.5t": "Incidents go first", "ab.w.5d": "If you're in the middle of an incident, your message jumps to the front of the line.",
+    "ab.w.6t": "Close to you", "ab.w.6d": "From Mexico City, in your language and your time zone, with Mexican obligations such as the LFPDPPP in mind.",
+    "ab.c.title": "Judge us by how we work, <em>not by what we say.</em>",
+    "ab.c.lead": "The first conversation is free. You'll leave it with a clear idea of where to start, whether or not you work with us.",
     "fw.title": "We work with",
     "svc.eyebrow": "Services",
     "svc.title": "Every layer of your security, with deliverables you can audit.",
@@ -104,12 +215,14 @@
     "r.2.s": "HIGH · CVSS 7.5", "r.2.t": "Backups in the same domain as production", "r.2.d": "Ransomware with domain privileges could encrypt the backups too.", "r.2.r": "ATT&amp;CK T1490 · Remediate within 30 days",
     "r.3.s": "MEDIUM · CVSS 5.3", "r.3.t": "Firewall logs without centralized retention", "r.3.d": "Without logs older than 7 days, an incident can't be reconstructed.", "r.3.r": "CIS Control 8 · Remediate within 90 days",
     "p.eyebrow": "How we work",
-    "p.title": "Engineering in service of your security.",
-    "p.lead": "Four commitments that apply to every project, whatever its size.",
-    "p.1.t": "Verifiable findings", "p.1.d": "Every finding includes evidence and steps to reproduce it. No unsupported alarms.",
-    "p.2.t": "Two languages, one plan", "p.2.d": "Executive reports for leadership and technical reports for IT, aligned to the same roadmap.",
-    "p.3.t": "Confidential from day one", "p.3.d": "Non-disclosure agreements and encrypted handling of your organization's information.",
-    "p.4.t": "Scoped to you", "p.4.d": "We recommend what your operation needs, in the order that reduces your risk the most.",
+    "p.title": "Rules you can verify before you sign.",
+    "p.lead": "We don't ask for faith. Every commitment on this list goes in writing, or you can check it today on this very site.",
+    "p.1.t": "Confidentiality first", "p.1.d": "We sign the NDA before we receive the first document. Information travels and is stored encrypted.",
+    "p.2.t": "Scope in writing", "p.2.d": "What gets tested, when, and who to call if something happens. Nothing outside the agreement is touched.",
+    "p.3.t": "Reproducible evidence", "p.3.d": "Every finding comes with steps to reproduce it, a CVSS severity and an ATT&amp;CK or CIS reference. No unsupported alarms.",
+    "p.4.t": "We verify the fix", "p.4.d": "The work doesn't end with the report. We test again and confirm the finding is closed.",
+    "p.5.t": "We practice what we ask", "p.5.d": "This site publishes <a href=\"/.well-known/security.txt\">security.txt</a>, strict security headers and a bot-protected form.",
+    "p.6.t": "Nothing leaves without consent", "p.6.d": "The self-assessment runs entirely in your browser. Your answers never reach any server, ours included.",
     "f.eyebrow": "FAQ",
     "f.title": "What people usually ask us.",
     "f.lead": "Don't see your question? Write to us and we'll reply within one business day.",
@@ -152,14 +265,24 @@
     "ft.rights": "All rights reserved."
   };
 
-  var META = {
-    es: {
-      title: "IMA Engineering — Ciberseguridad e infraestructura TI",
-      desc: "Consultoría de ciberseguridad en México: diagnóstico de postura, pruebas de penetración, SOC y monitoreo, seguridad en la nube y cumplimiento. Evalúa tu postura de seguridad en minutos."
+  var PAGE_META = {
+    home: {
+      es: {
+        title: "IMA Engineering — Ciberseguridad e infraestructura TI",
+        desc: "Consultoría de ciberseguridad en México: diagnóstico de postura, pruebas de penetración, SOC y monitoreo, seguridad en la nube y cumplimiento. Evalúa tu postura de seguridad en minutos."
+      },
+      en: {
+        title: "IMA Engineering — Cybersecurity & IT infrastructure",
+        desc: "Cybersecurity consulting in Mexico: posture assessments, penetration testing, SOC and monitoring, cloud security and compliance. Assess your security posture in minutes."
+      }
     },
-    en: {
-      title: "IMA Engineering — Cybersecurity & IT infrastructure",
-      desc: "Cybersecurity consulting in Mexico: posture assessments, penetration testing, SOC and monitoring, cloud security and compliance. Assess your security posture in minutes."
+    diag: {
+      es: { title: "Diagnóstico de postura de seguridad — IMA Engineering", desc: "Diagnóstico de postura contra NIST CSF 2.0: mapa de madurez con evidencia, hallazgos priorizados y hoja de ruta. Precio por escrito según tu alcance, sin costos ocultos." },
+      en: { title: "Security posture assessment — IMA Engineering", desc: "Posture assessment against NIST CSF 2.0: evidence-backed maturity map, ranked findings and a roadmap. Written price based on your scope, no hidden costs." }
+    },
+    about: {
+      es: { title: "Nosotros — IMA Engineering", desc: "IMA Engineering es una consultoría de ciberseguridad e infraestructura TI en la Ciudad de México. Seguridad explicada con evidencia, no con miedo." },
+      en: { title: "About — IMA Engineering", desc: "IMA Engineering is a cybersecurity and IT infrastructure consultancy in Mexico City. Security explained with evidence, not fear." }
     }
   };
 
@@ -354,9 +477,10 @@
       if (v) el.setAttribute("placeholder", v);
     });
     $all(".lang-btn").forEach(function (b) { b.setAttribute("aria-pressed", String(b.getAttribute("data-lang") === lang)); });
-    document.title = META[lang].title;
+    var meta = (PAGE_META[document.documentElement.getAttribute("data-page")] || PAGE_META.home)[lang];
+    document.title = meta.title;
     var md = $('meta[name="description"]');
-    if (md) md.setAttribute("content", META[lang].desc);
+    if (md) md.setAttribute("content", meta.desc);
     syncMenuLabel();
     Assessment.render();
     if (scanRedraw) scanRedraw();
@@ -396,7 +520,7 @@
     document.addEventListener("click", function (e) {
       if (nav.classList.contains("is-open") && !nav.contains(e.target) && !toggle.contains(e.target)) setMenu(false);
     });
-    var mq = window.matchMedia ? window.matchMedia("(min-width: 921px)") : null;
+    var mq = window.matchMedia ? window.matchMedia("(min-width: 1081px)") : null;
     if (mq) {
       var onChange = function () { if (mq.matches) setMenu(false); };
       if (mq.addEventListener) mq.addEventListener("change", onChange); else if (mq.addListener) mq.addListener(onChange);
@@ -1110,6 +1234,27 @@
     resume();
   }
 
+
+  /* ---------- Botón fijo en móvil ----------
+   * Aparece cuando el visitante ya pasó la primera pantalla y se esconde
+   * cuando el formulario está a la vista, para no tapar lo que importa. */
+  function initMobileCta() {
+    var btn = $("#m-cta");
+    var form = $("#contact-form");
+    if (!btn || !("IntersectionObserver" in window)) return;
+    var state = { past: false, form: false, foot: false };
+    function watch(el, key, invert) {
+      if (!el) return;
+      new IntersectionObserver(function (en) {
+        state[key] = invert ? !en[0].isIntersecting : en[0].isIntersecting;
+        btn.classList.toggle("is-on", state.past && !state.form && !state.foot);
+      }).observe(el);
+    }
+    watch($(".hero") || $(".page-hero"), "past", true);
+    watch(form, "form");
+    watch($(".site-footer"), "foot");
+  }
+
   /* ---------- Arranque ---------- */
   function init() {
     var y = $("#year");
@@ -1123,6 +1268,7 @@
     initServices();
     initCopy();
     initScan();
+    initMobileCta();
   }
 
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
