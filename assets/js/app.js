@@ -14,38 +14,45 @@
     "nav.assessment": "Self-assessment",
     "nav.faq": "FAQ",
     "nav.contact": "Book an assessment",
-    "nav.menu": "Open menu",
-    "hero.eyebrow": "Cybersecurity &amp; IT infrastructure · Mexico",
-    "hero.title": "Know your security posture. <span class=\"text-dim\">Improve it with a clear plan.</span>",
-    "hero.lead": "We assess your real exposure, prioritize the risks that matter to your business and support you through remediation and continuous monitoring.",
-    "hero.cta1": "Assess my posture",
+    "hero.eyebrow": "Cybersecurity &amp; IT infrastructure · Mexico City",
+    "hero.title": "Know where you're exposed <em>before an attacker does.</em>",
+    "hero.lead": "We measure your real posture against NIST CSF 2.0, prioritize what removes the most risk from your business and stay with you until every fix is verified.",
+    "hero.cta1": "Measure my posture in 5 min",
     "hero.cta2": "Talk to a specialist",
-    "hero.incident": "Active incident? Contact us right away",
-    "card.label": "Self-assessment",
-    "card.title": "How prepared is your organization?",
-    "card.text": "Twelve questions, five minutes. Get your maturity level across the six functions of the framework and where to start.",
+    "hero.incident": "Active incident? Write to us now",
+    "card.label": "Maturity map · NIST CSF 2.0",
+    "card.example": "Example",
+    "card.level": "Level",
+    "card.levelv": "Developing",
+    "card.weak": "Weakest",
+    "card.findings": "Findings",
+    "card.note": "Illustrative example: manufacturing company, 180 employees. Your real map comes from the assessment.",
+    "card.privacy": "Your answers stay in your browser. Nothing is sent.",
     "fn.GV": "Govern", "fn.ID": "Identify", "fn.PR": "Protect", "fn.DE": "Detect", "fn.RS": "Respond", "fn.RC": "Recover",
-    "card.cta": "Start self-assessment",
-    "card.privacy": "Your answers are processed only in your browser.",
-    "fw.title": "We work with recognized frameworks and standards",
+    "fw.title": "We work with",
     "svc.eyebrow": "Services",
-    "svc.title": "Every layer of your security, with concrete deliverables.",
-    "svc.lead": "No generic packages: we scope each engagement around your operation, your industry and your regulatory obligations.",
+    "svc.title": "Every layer of your security, with deliverables you can audit.",
+    "svc.lead": "No generic packages. We scope each engagement around your operation, your industry and your regulatory obligations.",
+    "svc.dur": "Typical duration:",
+    "svc.cont": "Ongoing service",
+    "svc.quote": "Get a quote",
     "svc.1.t": "Penetration testing",
     "svc.1.d": "We simulate real attacks against your perimeter, web applications and internal network to find what an adversary would find first.",
-    "svc.1.a": "Executive and technical report with evidence",
+    "svc.1.a": "Executive and technical report with reproducible evidence",
     "svc.1.b": "Findings rated by severity (CVSS)",
     "svc.1.c": "Retesting to verify remediation",
+    "svc.1.dur": "2 to 4 weeks",
     "svc.2.t": "SOC &amp; 24/7 monitoring",
-    "svc.2.d": "Continuous detection and response: we correlate events from your systems, triage alerts and contain incidents before they escalate.",
+    "svc.2.d": "Continuous detection and response. We correlate events from your systems, triage alerts and contain incidents before they escalate.",
     "svc.2.a": "Log centralization and detection use cases",
-    "svc.2.b": "Alert handling and incident response",
+    "svc.2.b": "Alert handling and incident response, after hours too",
     "svc.2.c": "Periodic activity and trend reports",
     "svc.3.t": "Cloud security",
     "svc.3.d": "Configuration, identity and architecture reviews on AWS, Azure and Google Cloud. Migrations that scale without opening new doors.",
     "svc.3.a": "Configuration review against best practices",
     "svc.3.b": "Identity and permission hardening (IAM)",
     "svc.3.c": "Secure architecture and migration",
+    "svc.3.dur": "1 to 3 weeks",
     "svc.4.t": "Managed IT",
     "svc.4.d": "We run your infrastructure with security in mind: networks, servers, endpoints and accounts, with documented processes.",
     "svc.4.a": "Patch and update management",
@@ -56,41 +63,52 @@
     "svc.5.a": "Gap analysis against the standard",
     "svc.5.b": "Policies, procedures and evidence",
     "svc.5.c": "Support throughout the audit",
+    "svc.5.dur": "3 to 6 months",
     "svc.6.t": "Security awareness",
     "svc.6.d": "People are still the most common way in. We train your team to recognize and report threats.",
     "svc.6.a": "Training tailored to each team",
     "svc.6.b": "Controlled phishing simulations",
     "svc.6.c": "Progress indicators for leadership",
+    "svc.6.dur": "Quarterly program",
     "m.eyebrow": "Method",
     "m.title": "From uncertainty to a measurable plan.",
-    "m.lead": "A clear process so leadership understands the risk and the technical team knows exactly what to do.",
-    "m.1.t": "Assess", "m.1.d": "Interviews, document review and technical testing to understand your actual exposure, not the assumed one.",
-    "m.2.t": "Prioritize", "m.2.d": "We rank findings by business impact and likelihood, not by alert volume.",
-    "m.3.t": "Remediate", "m.3.d": "We guide your team, or do the work ourselves, and verify that every fix holds.",
-    "m.4.t": "Monitor &amp; improve", "m.4.d": "We track how your posture evolves and adjust the plan as your business and the threats change.",
-    "d.eyebrow": "Starting point",
-    "d.title": "Security posture assessment",
-    "d.lead": "The most direct way to know where you stand and what to do first. It combines interviews with your team, documentation review and non-intrusive technical testing.",
-    "d.cta": "Request an assessment",
-    "d.get": "What you get",
-    "d.1.t": "Executive summary", "d.1.d": "Your risk level explained in business terms, for leadership.",
-    "d.2.t": "Maturity map", "d.2.d": "Where you stand on each NIST CSF 2.0 function, with supporting evidence.",
-    "d.3.t": "Prioritized findings", "d.3.d": "Each finding with severity, impact and a concrete recommendation.",
-    "d.4.t": "Roadmap", "d.4.d": "Short, medium and long-term actions in order, with suggested owners.",
-    "d.5.t": "Results session", "d.5.d": "We walk your team through the report and answer questions.",
+    "m.lead": "Leadership understands the risk in business terms. Your technical team knows exactly what to do on Monday.",
+    "m.out": "Deliverable:",
+    "m.1.t": "Assess", "m.1.d": "Interviews, document review and technical testing to understand your actual exposure, not the assumed one.", "m.1.o": "maturity map",
+    "m.2.t": "Prioritize", "m.2.d": "We rank findings by business impact and likelihood, not by alert volume.", "m.2.o": "roadmap",
+    "m.3.t": "Remediate", "m.3.d": "We guide your team, or do the work ourselves, and verify that every fix holds.", "m.3.o": "verification with evidence",
+    "m.4.t": "Monitor", "m.4.d": "We track how your posture evolves and adjust the plan as your business and the threats change.", "m.4.o": "periodic report",
     "a.eyebrow": "Self-assessment",
-    "a.title": "Measure your posture in five minutes.",
-    "a.lead": "Answer honestly: the goal is to find priorities, not to get a perfect score. Nothing is sent to any server.",
+    "a.title": "Twelve questions. Six functions. Your starting point.",
+    "a.lead": "Answer honestly: the goal is to find priorities, not to get a perfect score. The radar draws itself as you answer, and nothing is sent to any server.",
+    "a.posture": "Your posture",
     "a.prev": "Back",
     "a.next": "Next",
+    "d.eyebrow": "Starting point",
+    "d.title": "Security posture assessment.",
+    "d.lead": "The most direct way to know where you stand and what to do first. Interviews with your team, documentation review and non-intrusive technical testing.",
+    "d.cta": "Request an assessment",
+    "d.1.t": "Executive summary.", "d.1.d": "Your risk level explained in business terms, for leadership.",
+    "d.2.t": "Maturity map.", "d.2.d": "Your level on each NIST CSF 2.0 function, with supporting evidence.",
+    "d.3.t": "Prioritized findings.", "d.3.d": "Each finding with CVSS severity, impact and a concrete recommendation.",
+    "d.4.t": "Roadmap.", "d.4.d": "Short, medium and long-term actions, with suggested owners.",
+    "d.5.t": "Results session.", "d.5.d": "We walk your team through the report and answer questions.",
+    "r.title": "Technical report · Findings",
+    "r.conf": "Confidential",
+    "r.cap": "Sample report format",
+    "r.1.s": "CRITICAL · CVSS 9.1", "r.1.t": "VPN access without multi-factor authentication", "r.1.d": "Leaked credentials allow remote access to the internal network without a second factor.", "r.1.r": "ATT&amp;CK T1133 · Remediate within 7 days",
+    "r.2.s": "HIGH · CVSS 7.5", "r.2.t": "Backups in the same domain as production", "r.2.d": "Ransomware with domain privileges could encrypt the backups too.", "r.2.r": "ATT&amp;CK T1490 · Remediate within 30 days",
+    "r.3.s": "MEDIUM · CVSS 5.3", "r.3.t": "Firewall logs without centralized retention", "r.3.d": "Without logs older than 7 days, an incident can't be reconstructed.", "r.3.r": "CIS Control 8 · Remediate within 90 days",
     "p.eyebrow": "How we work",
     "p.title": "Engineering in service of your security.",
+    "p.lead": "Four commitments that apply to every project, whatever its size.",
     "p.1.t": "Verifiable findings", "p.1.d": "Every finding includes evidence and steps to reproduce it. No unsupported alarms.",
-    "p.2.t": "Two languages, one message", "p.2.d": "Executive reports for leadership and technical reports for IT, aligned to the same plan.",
+    "p.2.t": "Two languages, one plan", "p.2.d": "Executive reports for leadership and technical reports for IT, aligned to the same roadmap.",
     "p.3.t": "Confidential from day one", "p.3.d": "Non-disclosure agreements and encrypted handling of your organization's information.",
     "p.4.t": "Scoped to you", "p.4.d": "We recommend what your operation needs, in the order that reduces your risk the most.",
     "f.eyebrow": "FAQ",
     "f.title": "What people usually ask us.",
+    "f.lead": "Don't see your question? Write to us and we'll reply within one business day.",
     "f.1.q": "We don't know our security level. Where do we start?",
     "f.1.a": "The self-assessment on this page gives you a first idea. The next step is the posture assessment: it confirms that idea with evidence and gives you a prioritized roadmap.",
     "f.2.q": "What is the difference between a vulnerability assessment and a penetration test?",
@@ -105,8 +123,9 @@
     "f.6.a": "Don't power off affected machines: isolate them from the network to preserve evidence. Write to us right away choosing “Active incident” as the topic and we'll get back to you as a priority.",
     "c.eyebrow": "Contact",
     "c.title": "Let's talk about your security.",
-    "c.lead": "Tell us about your situation. A first conversation is free and helps define the next step.",
+    "c.lead": "Tell us about your situation. The first conversation is free and helps define the next step.",
     "c.email": "Email",
+    "c.copy": "Copy",
     "c.loc": "Location",
     "c.locv": "Mexico City, Mexico",
     "c.inc.t": "Active incident?",
@@ -165,7 +184,9 @@
       mailto: "Abrimos tu aplicación de correo con el mensaje listo; solo falta enviarlo. Si no se abrió, escríbenos a " + CONTACT_EMAIL + ".",
       captcha: "Completa la verificación de seguridad antes de enviar.",
       captchaFail: "No pudimos confirmar la verificación de seguridad. Inténtalo de nuevo.",
-      subject: "Solicitud desde el sitio web"
+      subject: "Solicitud desde el sitio web",
+      answered: "{n} / {t} respondidas", noData: "Sin datos", startHint: "Responde la primera pregunta para empezar a ver tu mapa.",
+      partial: "Resultado parcial: faltan {n} preguntas.", priority: "PRIORIDAD", copied: "Copiado", selected: "Selecciónalo"
     },
     en: {
       menuOpen: "Open menu", menuClose: "Close menu",
@@ -190,7 +211,9 @@
       mailto: "We opened your email app with the message ready; you just need to send it. If it didn't open, write to us at " + CONTACT_EMAIL + ".",
       captcha: "Please complete the security check before sending.",
       captchaFail: "We couldn't confirm the security check. Please try again.",
-      subject: "Website enquiry"
+      subject: "Website enquiry",
+      answered: "{n} / {t} answered", noData: "No data yet", startHint: "Answer the first question to start drawing your map.",
+      partial: "Partial result: {n} questions left.", priority: "PRIORITY", copied: "Copied", selected: "Select it"
     }
   };
 
@@ -375,26 +398,6 @@
     }
   }
 
-  /* ---------- Aparición al hacer scroll ---------- */
-  function initReveal() {
-    var els = $all(".reveal");
-    var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (!("IntersectionObserver" in window) || reduce) return;
-    var vh = window.innerHeight || document.documentElement.clientHeight;
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (en) {
-        if (en.isIntersecting) { en.target.classList.remove("is-pending"); io.unobserve(en.target); }
-      });
-    }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
-    els.forEach(function (el, i) {
-      if (el.getBoundingClientRect().top > vh) {
-        el.classList.add("is-pending");
-        el.style.transitionDelay = (i % 3) * 70 + "ms";
-        io.observe(el);
-      }
-    });
-  }
-
   /* ---------- Enlaces que preseleccionan un tema ---------- */
   function setTopic(value) {
     var sel = $("#cf-topic");
@@ -406,17 +409,95 @@
     });
   }
 
+  /* ---------- Servicios (pestañas) ---------- */
+  function initServices() {
+    var root = $("#svc");
+    if (!root) return;
+    var tabs = $all(".svc-tab", root);
+    function show(i, focus) {
+      tabs.forEach(function (t, k) {
+        var on = k === i;
+        t.setAttribute("aria-selected", String(on));
+        t.tabIndex = on ? 0 : -1;
+        var panel = document.getElementById(t.getAttribute("aria-controls"));
+        if (panel) panel.hidden = !on;
+      });
+      if (focus) tabs[i].focus();
+      if (window.innerWidth <= 900) tabs[i].scrollIntoView({ block: "nearest", inline: "nearest", behavior: "smooth" });
+    }
+    tabs.forEach(function (t, i) {
+      t.addEventListener("click", function () { show(i); });
+      t.addEventListener("keydown", function (e) {
+        var d = (e.key === "ArrowDown" || e.key === "ArrowRight") ? 1 : (e.key === "ArrowUp" || e.key === "ArrowLeft") ? -1 : 0;
+        if (e.key === "Home") { e.preventDefault(); show(0, true); }
+        else if (e.key === "End") { e.preventDefault(); show(tabs.length - 1, true); }
+        else if (d) { e.preventDefault(); show((i + d + tabs.length) % tabs.length, true); }
+      });
+    });
+    tabs.forEach(function (t, k) {
+      var panel = document.getElementById(t.getAttribute("aria-controls"));
+      if (panel) { panel.hidden = k !== 0; }
+      t.tabIndex = k === 0 ? 0 : -1;
+    });
+  }
+
+  /* ---------- Radar NIST CSF ---------- */
+  var SVGNS = "http://www.w3.org/2000/svg";
+  function radarPoint(i, v) {
+    var a = (-90 + i * 60) * Math.PI / 180, r = 140 * v / 3;
+    return [200 + r * Math.cos(a), 200 + r * Math.sin(a)];
+  }
+  function svgEl(tag, attrs, parent) {
+    var e = document.createElementNS(SVGNS, tag);
+    for (var k in attrs) e.setAttribute(k, attrs[k]);
+    if (parent) parent.appendChild(e);
+    return e;
+  }
+  function buildRadar(svg) {
+    var t, i, ring;
+    for (t = 1; t <= 3; t++) {
+      ring = [];
+      for (i = 0; i < 6; i++) ring.push(radarPoint(i, t).join(","));
+      svgEl("polygon", { points: ring.join(" "), "class": t === 3 ? "ring ring-outer" : "ring" }, svg);
+      var tp = radarPoint(0, t);
+      svgEl("text", { x: tp[0] + 6, y: tp[1] + 12, "class": "tier" }, svg).textContent = String(t);
+    }
+    var labels = [];
+    for (i = 0; i < 6; i++) {
+      var p = radarPoint(i, 3);
+      svgEl("line", { x1: 200, y1: 200, x2: p[0], y2: p[1], "class": "axis" }, svg);
+      var lp = radarPoint(i, 3.62);
+      var anchor = Math.abs(lp[0] - 200) < 5 ? "middle" : (lp[0] > 200 ? "start" : "end");
+      var dy = i === 0 ? -8 : (i === 3 ? 14 : 0);
+      svgEl("text", { x: lp[0], y: lp[1] + dy, "text-anchor": anchor, "class": "lbl-code" }, svg).textContent = FUNCTIONS[i];
+      labels.push(svgEl("text", { x: lp[0], y: lp[1] + dy + 15, "text-anchor": anchor, "class": "lbl" }, svg));
+    }
+    var center = [];
+    for (i = 0; i < 6; i++) center.push("200,200");
+    var shape = svgEl("polygon", { "class": "shape", points: center.join(" ") }, svg);
+    var dots = [];
+    for (i = 0; i < 6; i++) dots.push(svgEl("circle", { r: 4, cx: 200, cy: 200, "class": "dot" }, svg));
+    return {
+      labels: function () { labels.forEach(function (l, k) { l.textContent = FN_NAMES[lang][FUNCTIONS[k]]; }); },
+      draw: function (vals) {
+        var pts = vals.map(function (v, k) { return radarPoint(k, Math.max(v, 0.08)); });
+        shape.setAttribute("points", pts.map(function (q) { return q[0].toFixed(1) + "," + q[1].toFixed(1); }).join(" "));
+        dots.forEach(function (c, k) { c.setAttribute("cx", pts[k][0].toFixed(1)); c.setAttribute("cy", pts[k][1].toFixed(1)); });
+      }
+    };
+  }
+
   /* ---------- Autoevaluación ---------- */
   var Assessment = (function () {
-    var root, form, legend, hint, optionsBox, prevBtn, nextBtn, bar, fnLabel, countLabel, progress, result, err;
+    var form, legend, hint, optionsBox, prevBtn, nextBtn, bar, fnLabel, countLabel, result, err, radar;
     var answers = [];
     var step = 0;
-    var finished = false;
     var ready = false;
+    var advanceTimer = null;
 
     function init() {
-      root = $("#assess");
-      if (!root) return;
+    document.documentElement.classList.add("js");
+      if (!$("#assess")) return;
       form = $("#assess-form");
       legend = $("#assess-q");
       hint = $("#assess-hint");
@@ -426,30 +507,54 @@
       bar = $("#assess-bar");
       fnLabel = $("#assess-fn");
       countLabel = $("#assess-count");
-      progress = $(".assess-progress", root);
       result = $("#assess-result");
       err = document.createElement("p");
       err.className = "assess-error";
       err.setAttribute("role", "alert");
       form.appendChild(err);
+      radar = buildRadar($("#assess-radar"));
+      $("#r-bars").innerHTML = FUNCTIONS.map(function (f) {
+        return '<div class="bar"><span class="n" data-fn="' + f + '"></span><span class="track" aria-hidden="true"><i id="bar-' + f + '"></i></span><span class="v" id="val-' + f + '">—</span></div>';
+      }).join("");
 
       form.hidden = false;
-      progress.hidden = false;
+      result.hidden = false;
 
       form.addEventListener("submit", function (e) {
         e.preventDefault();
         if (answers[step] === undefined) { err.textContent = ui("pick"); return; }
         if (step < QUESTIONS.length - 1) { step++; render(true); }
-        else { finished = true; render(); result.focus({ preventScroll: true }); scrollIntoViewIfNeeded(root); }
+        else { scrollIntoViewIfNeeded(result); result.focus({ preventScroll: true }); }
       });
-      prevBtn.addEventListener("click", function () { if (step > 0) { step--; render(true); } });
+      prevBtn.addEventListener("click", function () { if (step > 0) { clearTimeout(advanceTimer); step--; render(true); } });
       optionsBox.addEventListener("change", function (e) {
-        if (e.target && e.target.name === "assess-opt") {
-          answers[step] = Number(e.target.value);
-          err.textContent = "";
-          $all(".option", optionsBox).forEach(function (o) { o.classList.toggle("is-checked", $("input", o).checked); });
+        if (!e.target || e.target.name !== "assess-opt") return;
+        answers[step] = Number(e.target.value);
+        err.textContent = "";
+        $all(".opt", optionsBox).forEach(function (o) { o.classList.toggle("is-checked", $("input", o).checked); });
+        renderResult();
+        clearTimeout(advanceTimer);
+        if (step < QUESTIONS.length - 1) {
+          var at = step;
+          advanceTimer = setTimeout(function () { if (step === at) { step++; render(true); } }, 320);
         }
       });
+      $("#assess-discuss").addEventListener("click", function () {
+        setTopic("diagnostico");
+        var msg = $("#cf-msg");
+        if (!msg) return;
+        var s = scores();
+        var lines = [ui("summaryIntro")];
+        FUNCTIONS.forEach(function (f) { lines.push("- " + FN_NAMES[lang][f] + ": " + LEVELS[lang][levelIndex(s.byFn[f].ratio)][0]); });
+        lines.push(ui("overall") + ": " + LEVELS[lang][levelIndex(s.overall)][0]);
+        lines.push("", ui("summaryOutro"));
+        msg.value = lines.join("\n");
+      });
+      $("#assess-restart").addEventListener("click", function () {
+        answers = []; step = 0; render(true);
+        scrollIntoViewIfNeeded(form);
+      });
+      result.tabIndex = -1;
       ready = true;
       render();
     }
@@ -462,17 +567,11 @@
     function render(focusFirst) {
       if (!ready) return;
       err.textContent = "";
-      if (finished) { renderResult(); return; }
-      result.hidden = true;
-      result.innerHTML = "";
-      form.hidden = false;
-      progress.hidden = false;
-
       var q = QUESTIONS[step];
       var txt = q[lang];
-      fnLabel.textContent = FN_NAMES[lang][q.fn];
+      fnLabel.textContent = q.fn + " · " + FN_NAMES[lang][q.fn];
       countLabel.textContent = ui("qOf").replace("{n}", step + 1).replace("{t}", QUESTIONS.length);
-      bar.style.width = (step / QUESTIONS.length * 100) + "%";
+      bar.style.width = ((step + 1) / QUESTIONS.length * 100) + "%";
       legend.textContent = txt[0];
       hint.textContent = txt[1];
       hint.hidden = !txt[1];
@@ -480,17 +579,22 @@
       var html = "";
       OPTIONS[lang].forEach(function (o, i) {
         var checked = answers[step] === i;
-        html += '<label class="option' + (checked ? " is-checked" : "") + '">' +
+        html += '<label class="opt' + (checked ? " is-checked" : "") + '">' +
           '<input type="radio" name="assess-opt" value="' + i + '"' + (checked ? " checked" : "") + ">" +
-          '<span class="option-text"><strong>' + esc(o[0]) + "</strong><span>" + esc(o[1]) + "</span></span></label>";
+          '<span class="box" aria-hidden="true"></span>' +
+          '<span><strong>' + esc(o[0]) + '</strong><span class="d">' + esc(o[1]) + "</span></span></label>";
       });
       optionsBox.innerHTML = html;
 
-      prevBtn.disabled = step === 0;
       var dict = lang === "en" ? EN : ES;
-      nextBtn.textContent = step === QUESTIONS.length - 1 ? ui("seeResults") : dict["a.next"];
+      prevBtn.disabled = step === 0;
       prevBtn.textContent = dict["a.prev"];
-      if (focusFirst) { var first = $("input", optionsBox); if (first) first.focus({ preventScroll: true }); }
+      nextBtn.textContent = step === QUESTIONS.length - 1 ? ui("seeResults") : dict["a.next"];
+      if (focusFirst) {
+        var target = $("input:checked", optionsBox) || $("input", optionsBox);
+        if (target) target.focus({ preventScroll: true });
+      }
+      renderResult();
     }
 
     function levelIndex(ratio) {
@@ -500,72 +604,87 @@
       return 3;
     }
 
+    /* Promedio por función solo con las preguntas respondidas. */
     function scores() {
-      var byFn = {};
-      FUNCTIONS.forEach(function (f) { byFn[f] = { sum: 0, max: 0 }; });
-      QUESTIONS.forEach(function (q, i) { byFn[q.fn].sum += answers[i] || 0; byFn[q.fn].max += 3; });
-      var total = 0;
-      FUNCTIONS.forEach(function (f) { byFn[f].ratio = byFn[f].sum / byFn[f].max; total += byFn[f].ratio; });
-      return { byFn: byFn, overall: total / FUNCTIONS.length };
+      var byFn = {}, total = 0, counted = 0;
+      FUNCTIONS.forEach(function (f) { byFn[f] = { sum: 0, max: 0, ratio: null }; });
+      QUESTIONS.forEach(function (q, i) {
+        if (answers[i] === undefined) return;
+        byFn[q.fn].sum += answers[i]; byFn[q.fn].max += 3;
+      });
+      FUNCTIONS.forEach(function (f) {
+        if (byFn[f].max) { byFn[f].ratio = byFn[f].sum / byFn[f].max; total += byFn[f].ratio; counted++; }
+      });
+      return { byFn: byFn, overall: counted ? total / counted : null };
     }
 
     function renderResult() {
-      form.hidden = true;
-      progress.hidden = true;
-      result.hidden = false;
       var s = scores();
-      var lv = LEVELS[lang][levelIndex(s.overall)];
-      var rows = "";
+      var n = answers.filter(function (a) { return a !== undefined; }).length;
+      radar.labels();
+      radar.draw(FUNCTIONS.map(function (f) { return s.byFn[f].ratio === null ? 0 : s.byFn[f].ratio * 3; }));
+      $("#r-answered").textContent = ui("answered").replace("{n}", n).replace("{t}", QUESTIONS.length);
       FUNCTIONS.forEach(function (f) {
-        var r = s.byFn[f].ratio;
-        rows += '<div class="result-row' + (r < 0.5 ? " is-low" : "") + '">' +
-          "<span>" + esc(FN_NAMES[lang][f]) + "</span>" +
-          '<div class="track" aria-hidden="true"><div class="fill" data-w="' + Math.max(4, Math.round(r * 100)) + '"></div></div>' +
-          '<span class="lvl">' + esc(LEVELS[lang][levelIndex(r)][0]) + "</span></div>";
+        var r = s.byFn[f].ratio, fill = $("#bar-" + f);
+        $('[data-fn="' + f + '"]', result).textContent = FN_NAMES[lang][f];
+        fill.style.width = r === null ? "0" : Math.max(4, Math.round(r * 100)) + "%";
+        fill.style.background = r === null ? "" : (r < 0.34 ? "var(--alert)" : r < 0.6 ? "var(--warn)" : "var(--ok)");
+        $("#val-" + f).textContent = r === null ? "—" : (r * 3).toFixed(1);
       });
 
-      var weakest = FUNCTIONS.slice()
-        .filter(function (f) { return s.byFn[f].ratio < 0.85; })
+      var levelEl = $("#r-level"), desc = $("#r-desc"), recs = $("#r-recs"), actions = $("#r-actions");
+      $("#assess-discuss").textContent = ui("discuss");
+      $("#assess-restart").textContent = ui("restart");
+      if (s.overall === null) {
+        levelEl.textContent = ui("noData");
+        levelEl.style.color = "";
+        $("#r-score").textContent = "— / 3.0";
+        desc.textContent = ui("startHint");
+        recs.innerHTML = "";
+        actions.hidden = true;
+        return;
+      }
+      var li = levelIndex(s.overall);
+      levelEl.textContent = LEVELS[lang][li][0];
+      levelEl.style.color = ["var(--alert)", "var(--warn)", "var(--accent)", "var(--ok)"][li];
+      $("#r-score").textContent = (s.overall * 3).toFixed(1) + " / 3.0";
+      desc.textContent = LEVELS[lang][li][1] + (n < QUESTIONS.length ? " " + ui("partial").replace("{n}", QUESTIONS.length - n) : "");
+
+      var weakest = FUNCTIONS
+        .filter(function (f) { return s.byFn[f].ratio !== null && s.byFn[f].ratio < 0.85; })
         .sort(function (a, b) { return s.byFn[a].ratio - s.byFn[b].ratio || FUNCTIONS.indexOf(a) - FUNCTIONS.indexOf(b); })
-        .slice(0, 3);
-      var recs = weakest.length
-        ? "<ol>" + weakest.map(function (f) { return "<li><span><strong>" + esc(FN_NAMES[lang][f]) + ".</strong> " + esc(RECS[lang][f]) + "</span></li>"; }).join("") + "</ol>"
-        : "<p>" + esc(ui("allGood")) + "</p>";
-
-      result.innerHTML =
-        '<div class="result-head"><span class="mono-label">' + esc(ui("overall")) + "</span><br>" +
-        '<span class="result-level">' + esc(lv[0]) + "</span><p>" + esc(lv[1]) + "</p></div>" +
-        '<div class="result-bars">' + rows + "</div>" +
-        '<div class="result-recs"><h3>' + esc(ui("priorities")) + "</h3>" + recs + "</div>" +
-        '<div class="result-actions"><a href="#contacto" class="btn btn-primary" id="assess-discuss">' + esc(ui("discuss")) + "</a>" +
-        '<button type="button" class="btn btn-ghost" id="assess-restart">' + esc(ui("restart")) + "</button></div>" +
-        '<p class="result-note">' + esc(ui("note")) + "</p>";
-
-      // anima las barras después de pintar
-      window.requestAnimationFrame(function () {
-        window.requestAnimationFrame(function () {
-          $all(".fill", result).forEach(function (el) { el.style.width = el.getAttribute("data-w") + "%"; });
-        });
-      });
-
-      $("#assess-discuss", result).addEventListener("click", function () {
-        setTopic("diagnostico");
-        var msg = $("#cf-msg");
-        if (msg) {
-          var lines = [ui("summaryIntro")];
-          FUNCTIONS.forEach(function (f) { lines.push("- " + FN_NAMES[lang][f] + ": " + LEVELS[lang][levelIndex(s.byFn[f].ratio)][0]); });
-          lines.push(ui("overall") + ": " + lv[0]);
-          lines.push("", ui("summaryOutro"));
-          msg.value = lines.join("\n");
-        }
-      });
-      $("#assess-restart", result).addEventListener("click", function () {
-        answers = []; step = 0; finished = false; render(true);
-      });
+        .slice(0, 2);
+      if (weakest.length) {
+        recs.innerHTML = weakest.map(function (f) {
+          return '<div class="rec"><b>' + esc(ui("priority")) + " · " + f + " " + esc(FN_NAMES[lang][f].toUpperCase()) + "</b>" + esc(RECS[lang][f]) + "</div>";
+        }).join("");
+      } else {
+        recs.innerHTML = n === QUESTIONS.length ? '<div class="rec">' + esc(ui("allGood")) + "</div>" : "";
+      }
+      actions.hidden = n < QUESTIONS.length;
     }
 
     return { init: init, render: render };
   })();
+
+  /* ---------- Copiar correo ---------- */
+  function initCopy() {
+    var btn = $("#copy-email"), val = $("#email-val");
+    if (!btn || !val) return;
+    function flash(key) {
+      btn.textContent = ui(key);
+      setTimeout(function () { btn.textContent = lang === "en" ? EN["c.copy"] : ES["c.copy"]; }, 1600);
+    }
+    function selectText() {
+      var r = document.createRange(); r.selectNodeContents(val);
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+    }
+    btn.addEventListener("click", function () {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(CONTACT_EMAIL).then(function () { flash("copied"); }, function () { selectText(); flash("selected"); });
+      } else { selectText(); flash("selected"); }
+    });
+  }
 
   /* ---------- Formulario de contacto ---------- */
   function initContactForm() {
@@ -709,7 +828,8 @@
     Assessment.init();
     initLang();
     initContactForm();
-    initReveal();
+    initServices();
+    initCopy();
   }
 
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
