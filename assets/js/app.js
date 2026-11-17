@@ -15,18 +15,22 @@
     "nav.faq": "FAQ",
     "nav.contact": "Book an assessment",
     "hero.eyebrow": "Cybersecurity &amp; IT infrastructure · Mexico City",
-    "hero.title": "Know where you're exposed <em>before an attacker does.</em>",
-    "hero.lead": "We measure your real posture against NIST CSF 2.0, prioritize what removes the most risk from your business and stay with you until every fix is verified.",
+    "hero.title1": "Find your gaps",
+    "hero.title2": "before they do.",
+    "hero.lead": "Someone is already scanning your network. We measure your real posture against NIST CSF 2.0, tell you what to fix first and verify every fix. No 300-page reports nobody reads.",
     "hero.cta1": "Measure my posture in 5 min",
-    "hero.cta2": "Talk to a specialist",
+    "hero.cta2": "Book an assessment",
     "hero.incident": "Active incident? Write to us now",
-    "card.label": "Maturity map · NIST CSF 2.0",
-    "card.example": "Example",
-    "card.level": "Level",
-    "card.levelv": "Developing",
-    "card.weak": "Weakest",
-    "card.findings": "Findings",
-    "card.note": "Illustrative example: manufacturing company, 180 employees. Your real map comes from the assessment.",
+    "hero.p1": "free self-assessment, no sign-up",
+    "hero.p2": "NIST CSF 2.0 functions measured",
+    "hero.p3u": "day",
+    "hero.p3": "business day to hear back",
+    "scan.tag": "Attacker's view · simulation",
+    "scan.found": "exposed findings",
+    "scan.hintFine": "Move your cursor to scan the network",
+    "scan.hintTouch": "Tap the network to scan",
+    "scan.done": "An attacker takes the same time. Let's check your network",
+    "scan.sr": "Illustrative simulation: a scan sweeps an example network and reveals six findings, from a VPN without multi-factor authentication to missing HTTP headers.",
     "card.privacy": "Your answers stay in your browser. Nothing is sent.",
     "fn.GV": "Govern", "fn.ID": "Identify", "fn.PR": "Protect", "fn.DE": "Detect", "fn.RS": "Respond", "fn.RC": "Recover",
     "fw.title": "We work with",
@@ -355,6 +359,7 @@
     if (md) md.setAttribute("content", META[lang].desc);
     syncMenuLabel();
     Assessment.render();
+    if (scanRedraw) scanRedraw();
     if (persist) store("ima-lang", lang);
   }
 
@@ -818,6 +823,279 @@
     });
   }
 
+  /* ---------- Escáner del hero ----------
+   * Una red de ejemplo en canvas. El haz recorre solo los hallazgos al cargar
+   * y después sigue al cursor o al dedo. Es una simulación: no lee nada real. */
+  var SCAN_FINDINGS = {
+    es: [["CRÍTICA", "VPN sin MFA"], ["ALTA", "RDP expuesto a internet"], ["ALTA", "Respaldos en el dominio"],
+         ["MEDIA", "Credenciales filtradas"], ["MEDIA", "TLS 1.0 activo"], ["BAJA", "Faltan encabezados HTTP"]],
+    en: [["CRITICAL", "VPN without MFA"], ["HIGH", "RDP exposed to the internet"], ["HIGH", "Backups on the domain"],
+         ["MEDIUM", "Leaked credentials"], ["MEDIUM", "TLS 1.0 enabled"], ["LOW", "Missing HTTP headers"]]
+  };
+  // Posiciones relativas de los hallazgos, en el orden en que el haz los visita.
+  var SCAN_SPOTS = {
+    wide: [[.63, .34], [.82, .22], [.91, .46], [.79, .68], [.60, .74], [.69, .57]],
+    compact: [[.22, .14], [.74, .27], [.30, .40], [.78, .51], [.20, .61], [.64, .71]]
+  };
+  var scanRedraw = null;
+
+  function initScan() {
+    var hero = $("#hero-scan"), box = $("#scan"), canvas = $("#scan-canvas");
+    if (!hero || !box || !canvas || !canvas.getContext) return;
+    var ctx = canvas.getContext("2d");
+    var hud = $("#scan-hud"), foundEl = $("#scan-found");
+    var css = window.getComputedStyle(document.documentElement);
+    function cssVar(n, d) { return css.getPropertyValue(n).trim() || d; }
+    var C = { accent: cssVar("--accent", "#6cb4ff"), alert: cssVar("--alert", "#ff8a7a"), warn: cssVar("--warn", "#f2c76b"), muted: cssVar("--text-2", "#aab3c0") };
+    var SEV = [C.alert, C.warn, C.warn, C.accent, C.accent, C.muted];
+    var MONO = "'JetBrains Mono', ui-monospace, Menlo, monospace";
+    var reduce = !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+    var total = SCAN_FINDINGS.es.length;
+    $("#scan-total").textContent = String(total);
+
+    var W = 0, H = 0, dpr = 1, compact = false, R = 160;
+    var nodes = [], edges = [], vulns = [];
+    var found = [], foundCount = 0;
+    for (var i = 0; i < total; i++) found.push(0);
+    var beam = { x: 0, y: 0, tx: 0, ty: 0 };
+    var pointer = null, lastUser = -1e9, tour = 0;
+    var start = 0, last = 0, raf = 0, visible = true;
+
+    function rng(seed) {
+      return function () {
+        seed = seed + 0x6D2B79F5 | 0;
+        var t = Math.imul(seed ^ seed >>> 15, 1 | seed);
+        t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+        return ((t ^ t >>> 14) >>> 0) / 4294967296;
+      };
+    }
+
+    function layout() {
+      var r = box.getBoundingClientRect();
+      if (r.width < 10 || r.height < 10) return false;
+      W = r.width; H = r.height;
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      canvas.width = Math.round(W * dpr); canvas.height = Math.round(H * dpr);
+      compact = window.getComputedStyle(box).position !== "absolute";
+      R = compact ? Math.max(70, Math.min(W, H) * 0.24) : Math.min(180, Math.max(120, W * 0.11));
+      var rand = rng(11), step = compact ? 40 : 62;
+      var spots = SCAN_SPOTS[compact ? "compact" : "wide"];
+      vulns = spots.map(function (p) { return { x: p[0] * W, y: p[1] * H }; });
+      nodes = [];
+      for (var y = step * 0.6; y < H; y += step) {
+        for (var x = step * 0.6; x < W; x += step) {
+          if (rand() < 0.38) continue;
+          var nx = x + (rand() - 0.5) * step * 0.8, ny = y + (rand() - 0.5) * step * 0.8;
+          var clash = vulns.some(function (v) { return Math.hypot(v.x - nx, v.y - ny) < step * 0.7; });
+          if (!clash) nodes.push({ x: nx, y: ny, v: -1, ip: "10.0." + ((rand() * 40) | 0) + "." + (2 + ((rand() * 250) | 0)) });
+        }
+      }
+      vulns.forEach(function (v, k) { nodes.push({ x: v.x, y: v.y, v: k, ip: "10.0." + (3 + k * 7) + "." + (11 + k * 23) }); });
+      edges = [];
+      var maxD = step * 1.45;
+      for (var a = 0; a < nodes.length; a++) {
+        for (var b = a + 1; b < nodes.length; b++) {
+          var d = Math.hypot(nodes[a].x - nodes[b].x, nodes[a].y - nodes[b].y);
+          if (d < maxD && (nodes[a].v >= 0 || nodes[b].v >= 0 || rand() < 0.55)) edges.push([nodes[a], nodes[b]]);
+        }
+      }
+      if (!start) {
+        // El haz entra desde el lado del texto hacia el primer hallazgo.
+        beam.x = beam.tx = compact ? W * 0.5 : W * 0.46;
+        beam.y = beam.ty = compact ? H * 0.5 : H * 0.42;
+      }
+      return true;
+    }
+
+    function markFound(k, now) {
+      if (found[k]) return;
+      found[k] = now; foundCount++;
+      if (foundEl) {
+        foundEl.textContent = String(foundCount);
+        foundEl.classList.remove("bump"); void foundEl.offsetWidth; foundEl.classList.add("bump");
+      }
+      if (foundCount === total && hud) hud.classList.add("is-done");
+    }
+
+    function update(now, dt) {
+      var t = (now - start) / 1000;
+      var user = pointer && now - lastUser < 2600;
+      var f = 0.05;
+      if (user) { beam.tx = pointer.x; beam.ty = pointer.y; f = 0.2; }
+      else if (t < 0.7) { f = 0; }
+      else if (foundCount < total) {
+        while (found[tour % total]) tour++;
+        var v = vulns[tour % total];
+        beam.tx = v.x; beam.ty = v.y;
+      } else {
+        var x0 = compact ? 0.5 : 0.75, ax = compact ? 0.32 : 0.18;
+        beam.tx = W * (x0 + ax * Math.sin(t * 0.31));
+        beam.ty = H * (0.52 + 0.3 * Math.sin(t * 0.47 + 1.3));
+        f = 0.025;
+      }
+      var k = 1 - Math.pow(1 - f, dt * 60);
+      beam.x += (beam.tx - beam.x) * k;
+      beam.y += (beam.ty - beam.y) * k;
+      // Solo el visitante descubre de paso; el recorrido automático va de uno en uno.
+      vulns.forEach(function (v, i) {
+        var d = Math.hypot(beam.x - v.x, beam.y - v.y);
+        if (user ? d < R * 0.5 : (i === tour % total && d < 14)) markFound(i, now);
+      });
+    }
+
+    function near(n) { var d = Math.hypot(n.x - beam.x, n.y - beam.y); return d >= R ? 0 : Math.pow(1 - d / R, 1.4); }
+
+    function pill(n, k, now) {
+      var item = SCAN_FINDINGS[lang][k];
+      var text = item[0] + " · " + item[1];
+      var fs = compact ? 10 : 11;
+      ctx.font = "500 " + fs + "px " + MONO;
+      var w = ctx.measureText(text).width + 26, h = fs + 13;
+      var x = n.x + 14, y = n.y - h - 8;
+      if (x + w > W - 8) x = n.x - 14 - w;
+      if (x < 8) x = Math.max(8, Math.min(W - 8 - w, n.x - w / 2));
+      if (y < 8) y = n.y + 12;
+      var a = reduce ? 1 : Math.min(1, (now - found[k]) / 350);
+      ctx.globalAlpha = a;
+      ctx.fillStyle = "rgba(13, 16, 22, .92)";
+      ctx.strokeStyle = SEV[k];
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      if (ctx.roundRect) ctx.roundRect(x, y, w, h, 6); else ctx.rect(x, y, w, h);
+      ctx.fill(); ctx.globalAlpha = a * 0.6; ctx.stroke(); ctx.globalAlpha = a;
+      ctx.fillStyle = SEV[k];
+      ctx.fillRect(x + 9, y + h / 2 - 2.5, 5, 5);
+      ctx.fillStyle = "#eef2f7";
+      ctx.textBaseline = "middle";
+      ctx.fillText(text, x + 19, y + h / 2 + 0.5);
+      ctx.globalAlpha = 1;
+    }
+
+    function draw(now) {
+      var t = now / 1000;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      ctx.clearRect(0, 0, W, H);
+      var showBeam = !reduce;
+
+      if (showBeam) {
+        var g = ctx.createRadialGradient(beam.x, beam.y, 0, beam.x, beam.y, R * 1.5);
+        g.addColorStop(0, "rgba(108, 180, 255, .16)");
+        g.addColorStop(1, "rgba(108, 180, 255, 0)");
+        ctx.fillStyle = g;
+        ctx.fillRect(beam.x - R * 1.5, beam.y - R * 1.5, R * 3, R * 3);
+      }
+
+      ctx.lineWidth = 1;
+      edges.forEach(function (e) {
+        var l = showBeam ? Math.max(near(e[0]), near(e[1])) : 0;
+        ctx.strokeStyle = "rgba(150, 190, 240, " + (0.07 + l * 0.38).toFixed(3) + ")";
+        ctx.beginPath(); ctx.moveTo(e[0].x, e[0].y); ctx.lineTo(e[1].x, e[1].y); ctx.stroke();
+      });
+
+      var closest = null, cd = 1e9;
+      nodes.forEach(function (n) {
+        var l = showBeam ? near(n) : 0;
+        if (n.v >= 0 && found[n.v]) return;
+        var d = Math.hypot(n.x - beam.x, n.y - beam.y);
+        if (d < cd) { cd = d; closest = n; }
+        ctx.fillStyle = l > 0.05 ? "rgba(108, 180, 255, " + (0.3 + l * 0.7).toFixed(3) + ")" : "rgba(150, 190, 240, .28)";
+        ctx.beginPath(); ctx.arc(n.x, n.y, 1.5 + l * 1.8, 0, 6.2832); ctx.fill();
+      });
+
+      if (showBeam) {
+        // Barrido giratorio dentro del haz.
+        var ang = t * 1.7;
+        if (ctx.createConicGradient) {
+          var cg = ctx.createConicGradient(ang - 0.9, beam.x, beam.y);
+          cg.addColorStop(0, "rgba(108, 180, 255, 0)");
+          cg.addColorStop(0.14, "rgba(108, 180, 255, .22)");
+          cg.addColorStop(0.1401, "rgba(108, 180, 255, 0)");
+          ctx.fillStyle = cg;
+          ctx.beginPath(); ctx.arc(beam.x, beam.y, R, 0, 6.2832); ctx.fill();
+        }
+        ctx.strokeStyle = "rgba(108, 180, 255, .45)";
+        ctx.beginPath(); ctx.arc(beam.x, beam.y, R, 0, 6.2832); ctx.stroke();
+        ctx.setLineDash([3, 5]);
+        ctx.strokeStyle = "rgba(108, 180, 255, .3)";
+        ctx.beginPath(); ctx.arc(beam.x, beam.y, R * 0.5, 0, 6.2832); ctx.stroke();
+        ctx.setLineDash([]);
+        ctx.strokeStyle = "rgba(108, 180, 255, .7)";
+        ctx.beginPath();
+        [[1, 0], [-1, 0], [0, 1], [0, -1]].forEach(function (q) {
+          ctx.moveTo(beam.x + q[0] * (R - 7), beam.y + q[1] * (R - 7));
+          ctx.lineTo(beam.x + q[0] * (R + 7), beam.y + q[1] * (R + 7));
+        });
+        ctx.moveTo(beam.x - 5, beam.y); ctx.lineTo(beam.x + 5, beam.y);
+        ctx.moveTo(beam.x, beam.y - 5); ctx.lineTo(beam.x, beam.y + 5);
+        ctx.stroke();
+        if (closest && cd < R) {
+          ctx.font = "400 10px " + MONO;
+          ctx.textBaseline = "alphabetic";
+          ctx.fillStyle = "rgba(169, 211, 255, .85)";
+          var lx = beam.x + R * 0.72 + 6, ly = beam.y - R * 0.72;
+          if (lx + 110 > W) lx = beam.x - R * 0.72 - 110;
+          ctx.fillText("› " + closest.ip, lx, Math.max(14, ly));
+        }
+      }
+
+      vulns.forEach(function (v, k) {
+        if (!found[k]) return;
+        var c = SEV[k];
+        if (!reduce) {
+          var p = ((now - found[k]) % 1800) / 1800;
+          ctx.strokeStyle = c; ctx.globalAlpha = 1 - p;
+          ctx.beginPath(); ctx.arc(v.x, v.y, 5 + p * 20, 0, 6.2832); ctx.stroke();
+          ctx.globalAlpha = 1;
+        }
+        ctx.fillStyle = c;
+        ctx.beginPath(); ctx.arc(v.x, v.y, 4, 0, 6.2832); ctx.fill();
+        ctx.fillStyle = "#090b0f";
+        ctx.beginPath(); ctx.arc(v.x, v.y, 1.6, 0, 6.2832); ctx.fill();
+      });
+      vulns.forEach(function (v, k) { if (found[k]) pill(v, k, now); });
+    }
+
+    function frame(now) {
+      raf = 0;
+      if (!start) start = now;
+      var dt = Math.min(0.05, last ? (now - last) / 1000 : 0.016);
+      last = now;
+      update(now, dt);
+      draw(now);
+      if (visible && !document.hidden) raf = window.requestAnimationFrame(frame);
+    }
+    function resume() { if (!reduce && !raf && visible && !document.hidden) { last = 0; raf = window.requestAnimationFrame(frame); } }
+
+    function onPointer(e) {
+      var r = canvas.getBoundingClientRect();
+      var x = e.clientX - r.left, y = e.clientY - r.top;
+      if (x < 0 || y < 0 || x > r.width || y > r.height) return;
+      pointer = { x: x, y: y };
+      lastUser = performance.now();
+    }
+
+    if (!layout()) return;
+    canvas.classList.add("is-ready");
+
+    if (reduce) {
+      for (var j = 0; j < total; j++) markFound(j, 1);
+      scanRedraw = function () { draw(performance.now()); };
+      scanRedraw();
+      window.addEventListener("resize", function () { if (layout()) scanRedraw(); });
+      return;
+    }
+
+    hero.addEventListener("pointermove", onPointer);
+    hero.addEventListener("pointerdown", onPointer);
+    if ("ResizeObserver" in window) new ResizeObserver(function () { if (layout() && !raf) draw(performance.now()); }).observe(box);
+    else window.addEventListener("resize", layout);
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(function (en) { visible = en[0].isIntersecting; resume(); }).observe(box);
+    }
+    document.addEventListener("visibilitychange", resume);
+    resume();
+  }
+
   /* ---------- Arranque ---------- */
   function init() {
     var y = $("#year");
@@ -830,6 +1108,7 @@
     initContactForm();
     initServices();
     initCopy();
+    initScan();
   }
 
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
