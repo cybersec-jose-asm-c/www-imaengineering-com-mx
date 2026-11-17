@@ -563,6 +563,8 @@ h3 { font-size: 1.25rem; line-height: 1.25; font-weight: 600; font-stretch: 104%
 .info-row a.val:hover { color: var(--accent); }
 .copy { min-height: 40px; padding: 6px 16px; border: 1px solid var(--line-2); border-radius: 999px; background: transparent; font-family: var(--mono); font-size: .75rem; color: var(--text-2); cursor: pointer; }
 .copy:hover { border-color: var(--accent); color: var(--text); }
+.mail-opts { display: flex; flex-wrap: wrap; gap: 8px; }
+a.copy { display: inline-flex; align-items: center; text-decoration: none; }
 .incident-box { display: grid; grid-template-columns: 12px minmax(0, 1fr); gap: 14px; margin-top: 24px; padding: 18px; border: 1px solid rgba(255, 138, 122, .3); border-radius: var(--radius); background: rgba(255, 138, 122, .06); }
 .incident-box .pulse { margin-top: 8px; }
 .incident-title { color: var(--alert); font-weight: 600; }

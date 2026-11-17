@@ -24,8 +24,8 @@
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
 
-  <link rel="stylesheet" href="/assets/css/styles.css?v=20261117">
-  <script src="/assets/js/app.js?v=20261117" defer></script>
+  <link rel="stylesheet" href="/assets/css/styles.css?v=20261117b">
+  <script src="/assets/js/app.js?v=20261117b" defer></script>
 
   <script type="application/ld+json">
   {
@@ -466,7 +466,11 @@
         <div class="info">
           <div class="info-row">
             <div><span class="mono-label" data-i18n="c.email">Correo</span><a class="val" id="email-val" href="mailto:contacto@imaengineering.com.mx">contacto@imaengineering.com.mx</a></div>
-            <button type="button" class="copy" id="copy-email" data-i18n="c.copy">Copiar</button>
+            <div class="mail-opts" role="group" aria-label="Escribir el correo con">
+              <a class="copy" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=contacto@imaengineering.com.mx" target="_blank" rel="noopener">Gmail</a>
+              <a class="copy" href="https://outlook.office.com/mail/deeplink/compose?to=contacto@imaengineering.com.mx" target="_blank" rel="noopener">Outlook</a>
+              <button type="button" class="copy" id="copy-email" data-i18n="c.copy">Copiar</button>
+            </div>
           </div>
           <div class="info-row">
             <div><span class="mono-label" data-i18n="c.loc">Ubicación</span><span class="val" data-i18n="c.locv">Ciudad de México, México</span></div>
